@@ -12,17 +12,17 @@ class SearchException implements Exception {}
 /// {@endtemplate}
 class RocketRepository {
   /// {@macro rocket_repository}
-  RocketRepository({SpaceXApiClient? spacexApiClient})
-      : _spacexApiClient = spacexApiClient ?? SpaceXApiClient();
+  RocketRepository({SpaceXApiClient? spaceXApiClient})
+      : _spaceXApiClient = spaceXApiClient ?? SpaceXApiClient();
 
-  final SpaceXApiClient _spacexApiClient;
+  final SpaceXApiClient _spaceXApiClient;
 
   /// Returns a list of all SpaceX rockets.
   ///
   /// Throws a [RocketsException] if an error occurs.
   Future<List<Rocket>> fetchAllRockets() {
     try {
-      return _spacexApiClient.fetchAllRockets();
+      return _spaceXApiClient.fetchAllRockets();
     } on Exception {
       throw RocketsException();
     }
