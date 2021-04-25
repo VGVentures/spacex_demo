@@ -3,14 +3,14 @@ name: spacex_api
 on:
   pull_request:
     paths:
-      - "packages/storage/spacex_api/**"
+      - "packages/spacex_api/**"
       - ".github/workflows/spacex_api.yaml"
 
 jobs:
   build:
     defaults:
       run:
-        working-directory: packages/storage/spacex_api
+        working-directory: packages/spacex_api
 
     runs-on: ubuntu-latest
     container:
@@ -34,4 +34,4 @@ jobs:
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
         with:
-          path: packages/storage/spacex_api/coverage/lcov.info
+          path: packages/spacex_api/coverage/lcov.info

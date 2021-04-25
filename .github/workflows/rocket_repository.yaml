@@ -3,14 +3,14 @@ name: rocket_repository
 on:
   pull_request:
     paths:
-      - "packages/storage/rocket_repository/**"
+      - "packages/rocket_repository/**"
       - ".github/workflows/rocket_repository.yaml"
 
 jobs:
   build:
     defaults:
       run:
-        working-directory: packages/storage/rocket_repository
+        working-directory: packages/rocket_repository
 
     runs-on: ubuntu-latest
     container:
@@ -34,4 +34,4 @@ jobs:
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
         with:
-          path: packages/storage/rocket_repository/coverage/lcov.info
+          path: packages/rocket_repository/coverage/lcov.info
