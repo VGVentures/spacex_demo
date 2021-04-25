@@ -24,6 +24,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mock_navigator:
+    git:
+      url: https://github.com/jeroen-meijer/mock_navigator
+      ref: 66086ffedfca1a56baa1670e970dfe3b94bd6848
   bloc_test: ^8.0.0
   mocktail: ^0.1.0
   very_good_analysis: ^2.0.0

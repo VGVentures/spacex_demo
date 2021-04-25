@@ -40,8 +40,8 @@ class AppView extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Colors.black,
-            onPrimary: Colors.white,
+            primary: Colors.white,
+            onPrimary: Colors.black,
           ),
         ),
       ),
