@@ -1,0 +1,11 @@
+name: rocket_repository
+description: A Dart package for the rocket domain.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dependencies:
+  spacex_api:
+    path: ../spacex_api
