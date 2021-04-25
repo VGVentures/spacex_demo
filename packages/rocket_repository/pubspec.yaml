@@ -9,3 +9,9 @@ environment:
 dependencies:
   spacex_api:
     path: ../spacex_api
+
+dev_dependencies:
+  coverage: ^1.0.2
+  mocktail: ^0.1.1
+  test: ^1.17.1
+  very_good_analysis: ^2.0.3

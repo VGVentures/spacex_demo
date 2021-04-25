@@ -7,28 +7,27 @@ part 'rocket.g.dart';
 /// A model containing data about a SpaceX rocket.
 /// {@endtemplate}
 @JsonSerializable(
-  createToJson: false,
   fieldRename: FieldRename.snake,
 )
 class Rocket extends Equatable {
   /// {@macro rocket}
-  Rocket({
+  const Rocket({
     required this.id,
     required this.name,
     required this.description,
     required this.height,
     required this.diameter,
     required this.mass,
-    required this.flickrImages,
-    required this.active,
-    required this.stages,
-    required this.boosters,
-    required this.costPerLaunch,
-    required this.successRatePct,
-    required this.firstFlight,
-    required this.country,
-    required this.company,
-    required this.wikipedia,
+    this.flickrImages = const [],
+    this.active,
+    this.stages,
+    this.boosters,
+    this.costPerLaunch,
+    this.successRatePct,
+    this.firstFlight,
+    this.country,
+    this.company,
+    this.wikipedia,
   });
 
   /// The ID of the rocket.
@@ -55,36 +54,36 @@ class Rocket extends Equatable {
   final List<String> flickrImages;
 
   /// Indicates if this rocket is currently in use.
-  final bool active;
+  final bool? active;
 
   /// The amount of stages this rocket's boosters has.
-  final int stages;
+  final int? stages;
 
   /// The amount of boosters this rocket has.
-  final int boosters;
+  final int? boosters;
 
   /// The amount in dollars it costs on average to launch this rocket.
-  final int costPerLaunch;
+  final int? costPerLaunch;
 
   /// The percentage of times this rocket has been launched succesfully.
   ///
   /// This value must be in between `0` and `100`.
-  final int successRatePct;
+  final int? successRatePct;
 
   /// The date this rocket was first launched.
-  final DateTime firstFlight;
+  final DateTime? firstFlight;
 
   /// The country in which this rocket was built.
-  final String country;
+  final String? country;
 
   /// The name of the company that made this rocket.
-  final String company;
+  final String? company;
 
   /// A URL to the Wikipedia page of this rocket.
-  final String wikipedia;
+  final String? wikipedia;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         id,
         name,
         description,
@@ -106,6 +105,9 @@ class Rocket extends Equatable {
   /// Converts a JSON [Map] into a [Rocket] instance.
   static Rocket fromJson(Map<String, dynamic> json) => _$RocketFromJson(json);
 
+  /// Converts this [Rocket] instance into a JSON [Map].
+  Map<String, dynamic> toJson() => _$RocketToJson(this);
+
   @override
   String toString() => 'Rocket($id, $name)';
 }
@@ -114,12 +116,11 @@ class Rocket extends Equatable {
 /// A model that represents a certain length in both meters and feet.
 /// {@endtemplate}
 @JsonSerializable(
-  createToJson: false,
   fieldRename: FieldRename.snake,
 )
-class Length {
+class Length extends Equatable {
   /// {@macro length}
-  Length({
+  const Length({
     required this.meters,
     required this.feet,
   });
@@ -130,8 +131,14 @@ class Length {
   /// The length in imperial feet.
   final double feet;
 
+  @override
+  List<Object> get props => [meters, feet];
+
   /// Converts a JSON [Map] into a [Length] instance.
   static Length fromJson(Map<String, dynamic> json) => _$LengthFromJson(json);
+
+  /// Converts this [Length] instance into a JSON [Map].
+  Map<String, dynamic> toJson() => _$LengthToJson(this);
 
   @override
   String toString() => 'Length($meters m, $feet ft)';
@@ -141,24 +148,29 @@ class Length {
 /// A model that represents a certain length in both meters and feet.
 /// {@endtemplate}
 @JsonSerializable(
-  createToJson: false,
   fieldRename: FieldRename.snake,
 )
-class Mass {
+class Mass extends Equatable {
   /// {@macro mass}
-  Mass({
+  const Mass({
     required this.kg,
     required this.lb,
   });
 
   /// The mass in metric kilograms.
-  final int kg;
+  final double kg;
 
   /// The mass in imperial pounds.
-  final int lb;
+  final double lb;
+
+  @override
+  List<Object> get props => [kg, lb];
 
   /// Converts a JSON [Map] into a [Mass] instance.
   static Mass fromJson(Map<String, dynamic> json) => _$MassFromJson(json);
+
+  /// Converts this [Mass] instance into a JSON [Map].
+  Map<String, dynamic> toJson() => _$MassToJson(this);
 
   @override
   String toString() => 'Mass($kg kg, $lb lb)';

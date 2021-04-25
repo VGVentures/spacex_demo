@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:spacex_api/spacex_api.dart';
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 
 /// Thrown if an exception occurs while making an `http` request.
 class HttpException implements Exception {}
@@ -32,7 +33,11 @@ class SpaceXApiClient {
   SpaceXApiClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
-  static const _authority = 'api.spacexdata.com';
+  /// The host URL used for all API requests.
+  ///
+  /// Only exposed for testing purposes. Do not use directly.
+  @visibleForTesting
+  static const authority = 'api.spacexdata.com';
 
   final http.Client _httpClient;
 
@@ -40,13 +45,13 @@ class SpaceXApiClient {
   ///
   /// REST call: `GET /rockets`
   Future<List<Rocket>> fetchAllRockets() async {
-    final uri = Uri.https(_authority, '/v4/rockets');
+    final uri = Uri.https(authority, '/v4/rockets');
 
     http.Response response;
 
     try {
       response = await _httpClient.get(uri);
-    } on Exception {
+    } catch (_) {
       throw HttpException();
     }
 
@@ -58,7 +63,7 @@ class SpaceXApiClient {
 
     try {
       body = json.decode(response.body) as List;
-    } on Exception {
+    } catch (_) {
       throw JsonDecodeException();
     }
 
@@ -66,7 +71,7 @@ class SpaceXApiClient {
       return body
           .map((item) => Rocket.fromJson(item as Map<String, dynamic>))
           .toList();
-    } on Exception {
+    } catch (_) {
       throw JsonDeserializationException();
     }
   }
