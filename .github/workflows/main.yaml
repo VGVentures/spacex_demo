@@ -1,6 +1,13 @@
 name: spacex_demo
 
-on: [pull_request, push]
+on:
+  pull_request:
+    paths:
+      - "lib/**"
+      - "test/**"
+      - "packages/**"
+      - ".github/workflows/main.yaml"
+      - "pubspec.yaml"
 
 jobs:
   build:
