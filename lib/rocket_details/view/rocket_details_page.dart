@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RocketDetailsPage extends StatelessWidget {
   const RocketDetailsPage({Key? key}) : super(key: key);
@@ -40,8 +40,13 @@ class RocketDetailsView extends StatelessWidget {
         children: [
           ListView(
             children: [
-              if (rocket.flickrImages.isNotEmpty) _ImageHeader(),
-              _TitleHeader(),
+              if (rocket.flickrImages.isNotEmpty)
+                const _ImageHeader(
+                  key: Key('rocketDetailsPage_imageHeader'),
+                ),
+              const _TitleHeader(
+                key: Key('rocketDetailsPage_titleHeader'),
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 16.0,
@@ -50,26 +55,34 @@ class RocketDetailsView extends StatelessWidget {
                 ),
                 child: _DescriptionSection(),
               ),
-              const SizedBox(
-                height: 80.0,
-              ),
+              if (rocket.wikipedia != null)
+                const SizedBox(
+                  height: 80.0,
+                ),
             ],
           ),
-          Positioned(
-            left: 16.0,
-            bottom: 16.0,
-            right: 16.0,
-            child: Container(
-              height: 64.0,
-              child: ElevatedButton(
-                onPressed: () {
-                  // TODO: Implement.
-                  print('Implement me.');
-                },
-                child: Text(l10n.rocketDetailsOpenWikipediaButtonText),
+          if (rocket.wikipedia != null)
+            Positioned(
+              left: 16.0,
+              bottom: 16.0,
+              right: 16.0,
+              child: SizedBox(
+                height: 64.0,
+                child: ElevatedButton(
+                  key: const Key(
+                    'rocketDetailsPage_openWikipedia_elevatedButton',
+                  ),
+                  onPressed: () async {
+                    final url = rocket.wikipedia!;
+
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    }
+                  },
+                  child: Text(l10n.rocketDetailsOpenWikipediaButtonText),
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
@@ -77,6 +90,8 @@ class RocketDetailsView extends StatelessWidget {
 }
 
 class _ImageHeader extends StatelessWidget {
+  const _ImageHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final imageUrl = context.select(
@@ -101,6 +116,8 @@ class _ImageHeader extends StatelessWidget {
 }
 
 class _TitleHeader extends StatelessWidget {
+  const _TitleHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
