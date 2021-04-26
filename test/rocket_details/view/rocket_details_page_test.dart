@@ -48,13 +48,13 @@ void main() {
     when(
       () => urlLauncherPlatform.launch(
         any(),
-        useSafariVC: true,
-        useWebView: false,
-        enableJavaScript: false,
-        enableDomStorage: false,
-        universalLinksOnly: false,
-        headers: const <String, String>{},
-        webOnlyWindowName: null,
+        useSafariVC: any(named: 'useSafariVC'),
+        useWebView: any(named: 'useWebView'),
+        enableJavaScript: any(named: 'enableJavaScript'),
+        enableDomStorage: any(named: 'enableDomStorage'),
+        universalLinksOnly: any(named: 'universalLinksOnly'),
+        headers: any(named: 'headers'),
+        webOnlyWindowName: any(named: 'webOnlyWindowName'),
       ),
     ).thenAnswer((_) async => true);
   });
