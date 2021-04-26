@@ -9,9 +9,9 @@ void main() {
       id: '0',
       name: 'mock-rocket-name',
       description: 'mock-rocket-description',
-      height: const Length(meters: 1.0, feet: 1.0),
-      diameter: const Length(meters: 1.0, feet: 1.0),
-      mass: const Mass(kg: 1.0, lb: 1.0),
+      height: Length(meters: 1.0, feet: 1.0),
+      diameter: Length(meters: 1.0, feet: 1.0),
+      mass: Mass(kg: 1.0, lb: 1.0),
     );
 
     test('supports value comparison', () {
