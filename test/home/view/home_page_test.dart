@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:mock_navigator/mock_navigator.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
@@ -12,6 +13,12 @@ import '../../helpers/helpers.dart';
 class MockRocketRepository extends Mock implements RocketRepository {}
 
 class MockHomeCubit extends MockCubit<HomeState> implements HomeCubit {}
+
+class MockNavigator extends Mock
+    with MockNavigatorDiagnosticsMixin
+    implements MockNavigatorBase {}
+
+class FakeRoute<T> extends Fake implements Route<T> {}
 
 void main() {
   final rockets = List.generate(
@@ -46,13 +53,18 @@ void main() {
 
   group('HomeView', () {
     late HomeCubit homeCubit;
+    late MockNavigator navigator;
 
     setUp(() {
       homeCubit = MockHomeCubit();
+
+      navigator = MockNavigator();
+      when(() => navigator.push(any())).thenAnswer((_) async => null);
     });
 
     setUpAll(() {
       registerFallbackValue<HomeState>(const HomeState());
+      registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
@@ -139,6 +151,31 @@ void main() {
 
         expect(find.byKey(key), findsOneWidget);
         expect(find.byType(ListTile), findsNWidgets(rockets.length));
+      },
+    );
+
+    testWidgets(
+      'navigates to RocketDetailsPage when rocket is tapped',
+      (tester) async {
+        when(() => homeCubit.state).thenReturn(
+          HomeState(
+            status: HomeStatus.success,
+            rockets: rockets,
+          ),
+        );
+
+        await tester.pumpApp(
+          BlocProvider.value(
+            value: homeCubit,
+            child: MockNavigatorProvider(
+              navigator: navigator,
+              child: HomeView(),
+            ),
+          ),
+        );
+
+        await tester.tap(find.text(rockets.first.name));
+        verify(() => navigator.push(any())).called(1);
       },
     );
   });
