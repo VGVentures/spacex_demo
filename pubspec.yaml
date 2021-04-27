@@ -2,7 +2,7 @@ name: spacex_demo
 description: A Flutter app that demonstrates how to build a simple app using the
   SpaceX API created by the Very Good Ventures Team.
 version: 1.0.0+1
-homepage: https://github.com/jeroen-meijer/spacex_demo
+homepage: https://github.com/VGVentures/spacex_demo
 publish_to: none
 
 environment:
@@ -31,7 +31,7 @@ dev_dependencies:
       ref: 66086ffedfca1a56baa1670e970dfe3b94bd6848
   bloc_test: ^8.0.0
   mocktail: ^0.1.2
-  network_image_mock: ^2.0.0
+  mocktail_image_network: ^0.1.0
   plugin_platform_interface: ^2.0.0
   url_launcher_platform_interface: ^2.0.0
   very_good_analysis: ^2.0.0

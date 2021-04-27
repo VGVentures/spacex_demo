@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:network_image_mock/network_image_mock.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/rocket_details/rocket_details.dart';
@@ -74,7 +74,7 @@ void main() {
     });
 
     testWidgets('renders RocketDetailsView', (tester) async {
-      await mockNetworkImagesFor(() async {
+      await mockNetworkImages(() async {
         await tester.pumpApp(
           Navigator(
             onGenerateRoute: (_) => RocketDetailsPage.route(rocket: rocket),
@@ -89,7 +89,7 @@ void main() {
     testWidgets('renders first flickr image if present', (tester) async {
       const key = Key('rocketDetailsPage_imageHeader');
 
-      await mockNetworkImagesFor(() async {
+      await mockNetworkImages(() async {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketDetailsCubit,
@@ -105,7 +105,7 @@ void main() {
       testWidgets('renders rocket name', (tester) async {
         const key = Key('rocketDetailsPage_titleHeader');
 
-        await mockNetworkImagesFor(() async {
+        await mockNetworkImages(() async {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
@@ -125,7 +125,7 @@ void main() {
       });
 
       testWidgets('renders check icon when rocket is active', (tester) async {
-        await mockNetworkImagesFor(() async {
+        await mockNetworkImages(() async {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
@@ -152,7 +152,7 @@ void main() {
           ),
         );
 
-        await mockNetworkImagesFor(() async {
+        await mockNetworkImages(() async {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
@@ -167,7 +167,7 @@ void main() {
       testWidgets(
         'renders first launch date',
         (tester) async {
-          await mockNetworkImagesFor(() async {
+          await mockNetworkImages(() async {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
@@ -182,7 +182,7 @@ void main() {
     });
 
     testWidgets('renders description', (tester) async {
-      await mockNetworkImagesFor(() async {
+      await mockNetworkImages(() async {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketDetailsCubit,
@@ -214,7 +214,7 @@ void main() {
             ),
           );
 
-          await mockNetworkImagesFor(() async {
+          await mockNetworkImages(() async {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
@@ -230,7 +230,7 @@ void main() {
       testWidgets(
         'is rendered when the rocket contains a wikipedia url',
         (tester) async {
-          await mockNetworkImagesFor(() async {
+          await mockNetworkImages(() async {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
@@ -246,7 +246,7 @@ void main() {
       testWidgets(
         'attempts to open wikipedia url when pressed',
         (tester) async {
-          await mockNetworkImagesFor(() async {
+          await mockNetworkImages(() async {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
