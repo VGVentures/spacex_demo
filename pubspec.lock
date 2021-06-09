@@ -28,7 +28,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   bloc:
     dependency: "direct main"
     description:
@@ -42,7 +42,7 @@ packages:
       name: bloc_test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.0.0"
+    version: "8.0.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -112,7 +112,7 @@ packages:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -138,7 +138,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "7.0.1"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -167,7 +167,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.1"
+    version: "0.13.3"
   http_multi_server:
     dependency: transitive
     description:
@@ -253,7 +253,7 @@ packages:
       name: mocktail
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.4"
   mocktail_image_network:
     dependency: "direct dev"
     description:
@@ -454,7 +454,7 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.3"
+    version: "6.0.6"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -475,7 +475,7 @@ packages:
       name: url_launcher_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.3"
   url_launcher_web:
     dependency: transitive
     description:
@@ -503,7 +503,7 @@ packages:
       name: very_good_analysis
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.1"
   vm_service:
     dependency: transitive
     description:
@@ -541,4 +541,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.22.0"
+  flutter: ">=2.0.0"
