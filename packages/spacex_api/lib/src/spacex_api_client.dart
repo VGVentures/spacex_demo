@@ -69,7 +69,43 @@ class SpaceXApiClient {
 
     try {
       return body
-          .map((item) => Rocket.fromJson(item as Map<String, dynamic>))
+          .map((dynamic item) => Rocket.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      throw JsonDeserializationException();
+    }
+  }
+
+  /// Fetches all SpaceX crew members.
+  ///
+  /// REST call: `GET /crew`
+  Future<List<CrewMember>> fetchAllCrewMembers() async {
+    final uri = Uri.https(authority, '/v4/crew');
+
+    http.Response response;
+
+    try {
+      response = await _httpClient.get(uri);
+    } catch (_) {
+      throw HttpException();
+    }
+
+    if (response.statusCode != 200) {
+      throw HttpRequestFailure(response.statusCode);
+    }
+
+    List body;
+
+    try {
+      body = json.decode(response.body) as List;
+    } catch (_) {
+      throw JsonDecodeException();
+    }
+
+    try {
+      return body
+          .map((dynamic item) =>
+              CrewMember.fromJson(item as Map<String, dynamic>))
           .toList();
     } catch (_) {
       throw JsonDeserializationException();
