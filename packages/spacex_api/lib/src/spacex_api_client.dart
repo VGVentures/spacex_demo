@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:spacex_api/spacex_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import 'package:spacex_api/spacex_api.dart';
 
 /// Thrown if an exception occurs while making an `http` request.
 class HttpException implements Exception {}
@@ -88,10 +88,8 @@ class SpaceXApiClient {
       throw HttpRequestFailure(response.statusCode);
     }
 
-    List body;
-
     try {
-      return body = json.decode(response.body) as List;
+      return json.decode(response.body) as List;
     } catch (_) {
       throw JsonDecodeException();
     }
