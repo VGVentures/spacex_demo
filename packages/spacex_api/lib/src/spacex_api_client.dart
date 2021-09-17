@@ -46,29 +46,10 @@ class SpaceXApiClient {
   /// REST call: `GET /rockets`
   Future<List<Rocket>> fetchAllRockets() async {
     final uri = Uri.https(authority, '/v4/rockets');
-
-    http.Response response;
-
-    try {
-      response = await _httpClient.get(uri);
-    } catch (_) {
-      throw HttpException();
-    }
-
-    if (response.statusCode != 200) {
-      throw HttpRequestFailure(response.statusCode);
-    }
-
-    List body;
+    final responseBody = await _apiRequest(uri);
 
     try {
-      body = json.decode(response.body) as List;
-    } catch (_) {
-      throw JsonDecodeException();
-    }
-
-    try {
-      return body
+      return responseBody
           .map((dynamic item) => Rocket.fromJson(item as Map<String, dynamic>))
           .toList();
     } catch (_) {
@@ -81,7 +62,20 @@ class SpaceXApiClient {
   /// REST call: `GET /crew`
   Future<List<CrewMember>> fetchAllCrewMembers() async {
     final uri = Uri.https(authority, '/v4/crew');
+    final responseBody = await _apiRequest(uri);
 
+    try {
+      return responseBody
+          .map((dynamic item) =>
+              CrewMember.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      throw JsonDeserializationException();
+    }
+  }
+
+  // TODO: HOW DO YOU DESCRIBE private METHODS?
+  Future<List<dynamic>> _apiRequest(Uri uri) async {
     http.Response response;
 
     try {
@@ -97,18 +91,9 @@ class SpaceXApiClient {
     List body;
 
     try {
-      body = json.decode(response.body) as List;
+      return body = json.decode(response.body) as List;
     } catch (_) {
       throw JsonDecodeException();
-    }
-
-    try {
-      return body
-          .map((dynamic item) =>
-              CrewMember.fromJson(item as Map<String, dynamic>))
-          .toList();
-    } catch (_) {
-      throw JsonDeserializationException();
     }
   }
 }
