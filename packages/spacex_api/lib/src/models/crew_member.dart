@@ -60,7 +60,6 @@ class CrewMember extends Equatable {
       _$CrewMemberFromJson(json);
 
   /// Converts this [CrewMember] instance into a JSON [Map]
-  @override
   Map<String, dynamic> toJson() => _$CrewMemberToJson(this);
 
   @override

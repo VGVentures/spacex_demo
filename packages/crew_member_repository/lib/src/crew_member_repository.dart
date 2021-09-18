@@ -1,7 +1,7 @@
 import 'package:spacex_api/spacex_api.dart';
 
 /// Thrown when an error occurs while looking up the crew members
-class CrewException implements Exception {}
+class CrewMembersException implements Exception {}
 
 /// Thrown when an error occurs while performing a search
 class SearchException implements Exception {}
@@ -19,12 +19,12 @@ class CrewMemberRepository {
 
   /// Returns a list of all SpaceX crew members
   ///
-  /// Throws a [CrewsException] if an error occurs.
+  /// Throws a [CrewMembersException] if an error occurs.
   Future<List<CrewMember>> fetchAllCrewMembers() {
     try {
       return _spaceXApiClient.fetchAllCrewMembers();
     } on Exception {
-      throw CrewException();
+      throw CrewMembersException();
     }
   }
 }
