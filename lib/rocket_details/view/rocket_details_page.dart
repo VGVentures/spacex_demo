@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
+import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RocketDetailsPage extends StatelessWidget {
