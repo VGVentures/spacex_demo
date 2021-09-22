@@ -8,8 +8,8 @@ import 'package:test/test.dart';
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late Uri rocketURI;
-  late Uri crewURI;
+  late Uri rocketUri;
+  late Uri crewUri;
 
   group('SpaceXApiClient', () {
     late http.Client httpClient;
@@ -47,8 +47,8 @@ void main() {
     });
 
     setUpAll(() {
-      rocketURI = Uri.https(SpaceXApiClient.authority, '/v4/rockets');
-      crewURI = Uri.https(SpaceXApiClient.authority, '/v4/crew');
+      rocketUri = Uri.https(SpaceXApiClient.authority, '/v4/rockets');
+      crewUri = Uri.https(SpaceXApiClient.authority, '/v4/crew');
       registerFallbackValue<Uri>(Uri());
     });
 
@@ -61,13 +61,13 @@ void main() {
 
     group('.fetchAllRockets', () {
       setUp(() {
-        when(() => httpClient.get(rocketURI)).thenAnswer(
+        when(() => httpClient.get(rocketUri)).thenAnswer(
           (_) async => http.Response(json.encode(rockets), 200),
         );
       });
 
       test('throws HttpException when http client throws exception', () {
-        when(() => httpClient.get(rocketURI)).thenThrow(Exception());
+        when(() => httpClient.get(rocketUri)).thenThrow(Exception());
 
         expect(
           () => subject.fetchAllRockets(),
@@ -78,7 +78,7 @@ void main() {
       test(
         'throws HttpRequestFailure when response status code is not 200',
         () {
-          when(() => httpClient.get(rocketURI)).thenAnswer(
+          when(() => httpClient.get(rocketUri)).thenAnswer(
             (_) async => http.Response('', 400),
           );
 
@@ -95,7 +95,7 @@ void main() {
       test(
         'throws JsonDecodeException when decoding response fails',
         () {
-          when(() => httpClient.get(rocketURI)).thenAnswer(
+          when(() => httpClient.get(rocketUri)).thenAnswer(
             (_) async => http.Response('definitely not json!', 200),
           );
 
@@ -110,7 +110,7 @@ void main() {
         'throws JsonDeserializationException '
         'when deserializing json body fails',
         () {
-          when(() => httpClient.get(rocketURI)).thenAnswer(
+          when(() => httpClient.get(rocketUri)).thenAnswer(
             (_) async => http.Response(
               '[{"this_is_not_a_rocket_doc": true}]',
               200,
@@ -128,7 +128,7 @@ void main() {
         await subject.fetchAllRockets();
 
         verify(
-          () => httpClient.get(rocketURI),
+          () => httpClient.get(rocketUri),
         ).called(1);
       });
 
@@ -142,13 +142,13 @@ void main() {
 
     group('.fetchAllCrewMembers', () {
       setUp(() {
-        when(() => httpClient.get(crewURI)).thenAnswer(
+        when(() => httpClient.get(crewUri)).thenAnswer(
           (_) async => http.Response(json.encode(crewMembers), 200),
         );
       });
 
       test('throws HttpException when http client throws exception', () {
-        when(() => httpClient.get(crewURI)).thenThrow(Exception());
+        when(() => httpClient.get(crewUri)).thenThrow(Exception());
 
         expect(
           () => subject.fetchAllRockets(),
@@ -159,7 +159,7 @@ void main() {
       test(
         'throws HttpRequestFailure when response status code is not 200',
         () {
-          when(() => httpClient.get(crewURI)).thenAnswer(
+          when(() => httpClient.get(crewUri)).thenAnswer(
             (_) async => http.Response('', 400),
           );
 
@@ -176,7 +176,7 @@ void main() {
       test(
         'throws JsonDecodeException when decoding response fails',
         () {
-          when(() => httpClient.get(crewURI)).thenAnswer(
+          when(() => httpClient.get(crewUri)).thenAnswer(
             (_) async => http.Response('definitely not json!', 200),
           );
 
@@ -191,7 +191,7 @@ void main() {
         'throws JsonDeserializationException '
         'when deserializing json body fails',
         () {
-          when(() => httpClient.get(crewURI)).thenAnswer(
+          when(() => httpClient.get(crewUri)).thenAnswer(
             (_) async => http.Response(
               '[{"this_is_not_a_crew_doc": true}]',
               200,
@@ -209,7 +209,7 @@ void main() {
         await subject.fetchAllCrewMembers();
 
         verify(
-          () => httpClient.get(crewURI),
+          () => httpClient.get(crewUri),
         ).called(1);
       });
 

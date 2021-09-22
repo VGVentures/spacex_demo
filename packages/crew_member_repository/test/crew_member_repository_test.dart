@@ -59,6 +59,10 @@ void main() {
 
         verify(() => spaceXApiClient.fetchAllCrewMembers()).called(1);
       });
+
+      test('returns correct crew members', () async {
+        expect(await spaceXApiClient.fetchAllCrewMembers(), crewMembers);
+      });
     });
   });
 }

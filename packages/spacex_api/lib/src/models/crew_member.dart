@@ -39,12 +39,10 @@ class CrewMember extends Equatable {
   /// CrewMember member's information on wikipedia
   final String wikipedia;
 
-  /// Different launches a crew member has been a part of
-  // TODO: CREATE LAUNCH MODEL
+  /// List of launches IDs a member has been a part of
   final List<String> launches;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         name,

@@ -46,7 +46,7 @@ class SpaceXApiClient {
   /// REST call: `GET /rockets`
   Future<List<Rocket>> fetchAllRockets() async {
     final uri = Uri.https(authority, '/v4/rockets');
-    final responseBody = await _apiRequest(uri);
+    final responseBody = await _get(uri);
 
     try {
       return responseBody
@@ -62,7 +62,7 @@ class SpaceXApiClient {
   /// REST call: `GET /crew`
   Future<List<CrewMember>> fetchAllCrewMembers() async {
     final uri = Uri.https(authority, '/v4/crew');
-    final responseBody = await _apiRequest(uri);
+    final responseBody = await _get(uri);
 
     try {
       return responseBody
@@ -75,7 +75,7 @@ class SpaceXApiClient {
   }
 
   // TODO: HOW DO YOU DESCRIBE private METHODS?
-  Future<List<dynamic>> _apiRequest(Uri uri) async {
+  Future<List<dynamic>> _get(Uri uri) async {
     http.Response response;
 
     try {
