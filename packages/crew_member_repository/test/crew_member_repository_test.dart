@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:crew_member_repository/crew_member_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:spacex_api/spacex_api.dart';

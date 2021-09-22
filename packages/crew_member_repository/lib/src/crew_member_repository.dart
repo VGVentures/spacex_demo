@@ -7,8 +7,7 @@ class CrewMembersException implements Exception {}
 class SearchException implements Exception {}
 
 /// {@template crew_member_repository}
-/// A Dart class which exposes methods to implement
-/// crew-member-related functionality.
+/// A Dart package to manage the crew domain
 /// {@endtemplate}
 class CrewMemberRepository {
   ///  {@macro crew_member_repository}
