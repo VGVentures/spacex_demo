@@ -3,9 +3,6 @@ import 'package:spacex_api/spacex_api.dart';
 /// Thrown when an error occurs while looking up the crew members
 class CrewMembersException implements Exception {}
 
-/// Thrown when an error occurs while performing a search
-class SearchException implements Exception {}
-
 /// {@template crew_member_repository}
 /// A Dart package to manage the crew domain
 /// {@endtemplate}

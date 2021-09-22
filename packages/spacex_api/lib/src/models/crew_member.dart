@@ -3,14 +3,12 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'crew_member.g.dart';
 
-/// {@template crew}
+/// {@template crew_member}
 /// A model containing data about a SpaceX crew member
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable(fieldRename: FieldRename.snake)
 class CrewMember extends Equatable {
-  /// {@macro crewMember}
+  /// {@macro crew_member}
   const CrewMember({
     required this.id,
     required this.name,
@@ -21,22 +19,24 @@ class CrewMember extends Equatable {
     required this.launches,
   });
 
-  /// CrewMember member's id
+  /// The crew member's id
   final String id;
 
-  /// CrewMember member's name
+  /// The crew member's name
   final String name;
 
-  /// CrewMember member's status
+  /// The crew member's status
+  ///
+  /// This indicates whether the crew member is 'active' or 'inactive'
   final String status;
 
-  /// CrewMember member's belonging agency
+  /// The crew member's belonging agency
   final String agency;
 
-  /// CrewMember member's image
+  /// The crew member's image
   final String image;
 
-  /// CrewMember member's information on wikipedia
+  /// The crew member's information on wikipedia
   final String wikipedia;
 
   /// List of launches IDs a member has been a part of
@@ -61,5 +61,5 @@ class CrewMember extends Equatable {
   Map<String, dynamic> toJson() => _$CrewMemberToJson(this);
 
   @override
-  String toString() => 'Crew Member($id, $name)';
+  bool get stringify => true;
 }
