@@ -4,12 +4,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/home/home.dart';
+import 'package:spacex_demo/rockets/rockets.dart';
 
 class MockRocketRepository extends Mock implements RocketRepository {}
 
 void main() {
-  group('HomeCubit', () {
+  group('RocketsCubit', () {
     late RocketRepository rocketRepository;
 
     final rockets = List.generate(
@@ -32,49 +32,49 @@ void main() {
 
     test('initial state is correct', () {
       expect(
-        HomeCubit(
+        RocketsCubit(
           rocketRepository: rocketRepository,
         ).state,
-        equals(HomeState(
-          status: HomeStatus.initial,
+        equals(RocketsState(
+          status: RocketsStatus.initial,
         )),
       );
     });
 
     group('.fetchAllRockets', () {
-      blocTest<HomeCubit, HomeState>(
+      blocTest<RocketsCubit, RocketsState>(
         'emits state with updated rockets',
-        build: () => HomeCubit(
+        build: () => RocketsCubit(
           rocketRepository: rocketRepository,
         ),
         act: (cubit) => cubit.fetchAllRockets(),
         expect: () => [
-          HomeState(
-            status: HomeStatus.loading,
+          RocketsState(
+            status: RocketsStatus.loading,
           ),
-          HomeState(
-            status: HomeStatus.success,
+          RocketsState(
+            status: RocketsStatus.success,
             rockets: rockets,
           ),
         ],
       );
 
-      blocTest<HomeCubit, HomeState>(
+      blocTest<RocketsCubit, RocketsState>(
         'emits failure state when repository throws exception',
         build: () {
           when(() => rocketRepository.fetchAllRockets()).thenThrow(Exception());
 
-          return HomeCubit(
+          return RocketsCubit(
             rocketRepository: rocketRepository,
           );
         },
         act: (cubit) => cubit.fetchAllRockets(),
         expect: () => [
-          HomeState(
-            status: HomeStatus.loading,
+          RocketsState(
+            status: RocketsStatus.loading,
           ),
-          HomeState(
-            status: HomeStatus.failure,
+          RocketsState(
+            status: RocketsStatus.failure,
           ),
         ],
       );

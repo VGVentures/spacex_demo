@@ -6,13 +6,14 @@ import 'package:mock_navigator/mock_navigator.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/home/home.dart';
+import 'package:spacex_demo/rockets/rockets.dart';
 
 import '../../helpers/helpers.dart';
 
 class MockRocketRepository extends Mock implements RocketRepository {}
 
-class MockHomeCubit extends MockCubit<HomeState> implements HomeCubit {}
+class MockRocketsCubit extends MockCubit<RocketsState> implements RocketsCubit {
+}
 
 class MockNavigator extends Mock
     with MockNavigatorDiagnosticsMixin
@@ -33,7 +34,7 @@ void main() {
     ),
   );
 
-  group('HomePage', () {
+  group('RocketsPage', () {
     late RocketRepository rocketRepository;
 
     setUp(() {
@@ -42,44 +43,44 @@ void main() {
           .thenAnswer((_) async => rockets);
     });
 
-    testWidgets('renders HomeView', (tester) async {
+    testWidgets('renders RocketsView', (tester) async {
       await tester.pumpApp(
-        const HomePage(),
+        const RocketsPage(),
         rocketRepository: rocketRepository,
       );
-      expect(find.byType(HomeView), findsOneWidget);
+      expect(find.byType(RocketsView), findsOneWidget);
     });
   });
 
-  group('HomeView', () {
-    late HomeCubit homeCubit;
+  group('RocketsView', () {
+    late RocketsCubit rocketsCubit;
     late MockNavigator navigator;
 
     setUp(() {
-      homeCubit = MockHomeCubit();
+      rocketsCubit = MockRocketsCubit();
 
       navigator = MockNavigator();
       when(() => navigator.push(any())).thenAnswer((_) async => null);
     });
 
     setUpAll(() {
-      registerFallbackValue<HomeState>(const HomeState());
+      registerFallbackValue<RocketsState>(const RocketsState());
       registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
-      const key = Key('homeView_initial_sizedBox');
+      const key = Key('rocketsView_initial_sizedBox');
 
-      when(() => homeCubit.state).thenReturn(
-        const HomeState(
-          status: HomeStatus.initial,
+      when(() => rocketsCubit.state).thenReturn(
+        const RocketsState(
+          status: RocketsStatus.initial,
         ),
       );
 
       await tester.pumpApp(
         BlocProvider.value(
-          value: homeCubit,
-          child: HomeView(),
+          value: rocketsCubit,
+          child: RocketsView(),
         ),
       );
 
@@ -89,18 +90,18 @@ void main() {
     testWidgets(
       'renders loading indicator when status is loading',
       (tester) async {
-        const key = Key('homeView_loading_indicator');
+        const key = Key('rocketsView_loading_indicator');
 
-        when(() => homeCubit.state).thenReturn(
-          const HomeState(
-            status: HomeStatus.loading,
+        when(() => rocketsCubit.state).thenReturn(
+          const RocketsState(
+            status: RocketsStatus.loading,
           ),
         );
 
         await tester.pumpApp(
           BlocProvider.value(
-            value: homeCubit,
-            child: HomeView(),
+            value: rocketsCubit,
+            child: RocketsView(),
           ),
         );
 
@@ -111,18 +112,18 @@ void main() {
     testWidgets(
       'renders error text when status is failure',
       (tester) async {
-        const key = Key('homeView_failure_text');
+        const key = Key('rocketsView_failure_text');
 
-        when(() => homeCubit.state).thenReturn(
-          const HomeState(
-            status: HomeStatus.failure,
+        when(() => rocketsCubit.state).thenReturn(
+          const RocketsState(
+            status: RocketsStatus.failure,
           ),
         );
 
         await tester.pumpApp(
           BlocProvider.value(
-            value: homeCubit,
-            child: HomeView(),
+            value: rocketsCubit,
+            child: RocketsView(),
           ),
         );
 
@@ -133,19 +134,19 @@ void main() {
     testWidgets(
       'renders list of rockets when status is success',
       (tester) async {
-        const key = Key('homeView_success_rocketList');
+        const key = Key('rocketsView_success_rocketList');
 
-        when(() => homeCubit.state).thenReturn(
-          HomeState(
-            status: HomeStatus.success,
+        when(() => rocketsCubit.state).thenReturn(
+          RocketsState(
+            status: RocketsStatus.success,
             rockets: rockets,
           ),
         );
 
         await tester.pumpApp(
           BlocProvider.value(
-            value: homeCubit,
-            child: HomeView(),
+            value: rocketsCubit,
+            child: RocketsView(),
           ),
         );
 
@@ -157,19 +158,19 @@ void main() {
     testWidgets(
       'navigates to RocketDetailsPage when rocket is tapped',
       (tester) async {
-        when(() => homeCubit.state).thenReturn(
-          HomeState(
-            status: HomeStatus.success,
+        when(() => rocketsCubit.state).thenReturn(
+          RocketsState(
+            status: RocketsStatus.success,
             rockets: rockets,
           ),
         );
 
         await tester.pumpApp(
           BlocProvider.value(
-            value: homeCubit,
+            value: rocketsCubit,
             child: MockNavigatorProvider(
               navigator: navigator,
-              child: HomeView(),
+              child: RocketsView(),
             ),
           ),
         );

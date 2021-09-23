@@ -3,31 +3,31 @@ import 'package:equatable/equatable.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
 
-part 'home_state.dart';
+part 'rockets_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit({
+class RocketsCubit extends Cubit<RocketsState> {
+  RocketsCubit({
     required RocketRepository rocketRepository,
   })  : _rocketRepository = rocketRepository,
-        super(const HomeState());
+        super(const RocketsState());
 
   final RocketRepository _rocketRepository;
 
   Future<void> fetchAllRockets() async {
-    emit(HomeState(
-      status: HomeStatus.loading,
+    emit(RocketsState(
+      status: RocketsStatus.loading,
       rockets: state.rockets,
     ));
 
     try {
       final rockets = await _rocketRepository.fetchAllRockets();
-      emit(HomeState(
-        status: HomeStatus.success,
+      emit(RocketsState(
+        status: RocketsStatus.success,
         rockets: rockets,
       ));
     } on Exception {
-      emit(HomeState(
-        status: HomeStatus.failure,
+      emit(RocketsState(
+        status: RocketsStatus.failure,
         rockets: state.rockets,
       ));
     }

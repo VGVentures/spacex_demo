@@ -1,17 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spacex_demo/home/home.dart';
+import 'package:spacex_demo/rockets/rockets.dart';
 
 void main() {
-  group('HomeState', () {
+  group('RocketsState', () {
     test('supports value comparison', () {
       expect(
-        HomeState(
-          status: HomeStatus.success,
+        RocketsState(
+          status: RocketsStatus.success,
           rockets: [],
         ),
-        HomeState(
-          status: HomeStatus.success,
+        RocketsState(
+          status: RocketsStatus.success,
           rockets: [],
         ),
       );

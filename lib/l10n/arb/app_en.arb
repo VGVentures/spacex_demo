@@ -4,8 +4,20 @@
   "@homeAppBarTitle": {
     "description": "Text shown in the AppBar of the Home Page"
   },
-  "homeRocketFetchErrorMessage": "Something went wrong while fetching rockets. Please try again later.",
-  "@homeRocketFetchErrorMessage": {
+	"rocketSpaceXTileTitle": "Rockets",
+	"@rocketSpaceXTileTitle": {
+		"description": "Text included as title on the rockets tile on the home page"
+	},
+	"crewSpaceXTileTitle": "Crew",
+	"@crewSpaceXTileTitle": {
+		"description": "Text included as title on the crew tile on the home page"
+	},
+	"rocketsAppBarTitle": "Rockets",
+  "@rocketsAppBarTitle": {
+    "description": "Text shown in the AppBar of the Rockets Page"
+  },
+  "rocketsFetchErrorMessage": "Something went wrong while fetching rockets. Please try again later.",
+  "@rocketsFetchErrorMessage": {
     "description": "Error text shown on the Home Page when an error occurred while fetching rockets."
   },
   "rocketDetailsFirstFlightSubtitle": "First launch: {date}",
