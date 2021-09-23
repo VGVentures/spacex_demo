@@ -16,11 +16,12 @@ class HomePageContent extends StatelessWidget {
           height: 5,
         ),
         Expanded(
-          child: SpaceXTile(
-            title: l10n.rocketSpaceXTileTitle,
-            image: 'assets/images/img_spacex_rocket.jpeg',
-            onTap: () => Navigator.of(context).push(
-              RocketsPage.route(),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).push(RocketsPage.route()),
+            child: SpaceXTile(
+              title: l10n.rocketSpaceXTileTitle,
+              image: 'assets/images/img_spacex_rocket.jpeg',
+              key: const Key('homePageContent_rocketSpaceXTile'),
             ),
           ),
         ),
@@ -28,12 +29,13 @@ class HomePageContent extends StatelessWidget {
           height: 5,
         ),
         Expanded(
-          child: SpaceXTile(
-            title: l10n.crewSpaceXTileTitle,
-            image: 'assets/images/img_spacex_crew.jpeg',
+          child: GestureDetector(
             // TODO: CHANGE TO CREW PAGE ROUTE
-            onTap: () => Navigator.of(context).push(
-              RocketsPage.route(),
+            onTap: () => Navigator.of(context).push(RocketsPage.route()),
+            child: SpaceXTile(
+              title: l10n.crewSpaceXTileTitle,
+              image: 'assets/images/img_spacex_crew.jpeg',
+              key: const Key('homePageContent_crewSpaceXTile'),
             ),
           ),
         ),
