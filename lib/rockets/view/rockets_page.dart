@@ -49,7 +49,6 @@ class _Content extends StatelessWidget {
     final l10n = context.l10n;
     final status = context.select((RocketsCubit cubit) => cubit.state.status);
 
-// TODO: FACTOR OUT THIS FUNCTION TO BE USED BY EVERY PAGE
     switch (status) {
       case RocketsStatus.initial:
         return const SizedBox(
