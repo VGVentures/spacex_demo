@@ -79,7 +79,7 @@ class RocketDetailsView extends StatelessWidget {
                       await launch(url);
                     }
                   },
-                  child: Text(l10n.rocketDetailsOpenWikipediaButtonText),
+                  child: Text(l10n.openWikipediaButtonText),
                 ),
               ),
             ),
