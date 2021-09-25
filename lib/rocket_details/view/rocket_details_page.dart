@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 class RocketDetailsPage extends StatelessWidget {
   const RocketDetailsPage({Key? key}) : super(key: key);
 
-  static Route<void> route({required Rocket rocket}) {
+  static Route<RocketDetailsPage> route({required Rocket rocket}) {
     return MaterialPageRoute(
       builder: (_) => BlocProvider(
         create: (_) => RocketDetailsCubit(rocket: rocket),

@@ -8,7 +8,7 @@ import 'package:spacex_demo/rockets/rockets.dart';
 class RocketsPage extends StatelessWidget {
   const RocketsPage({Key? key}) : super(key: key);
 
-  static Route<void> route() {
+  static Route<RocketsPage> route() {
     return MaterialPageRoute(
       builder: (context) => const RocketsPage(),
     );

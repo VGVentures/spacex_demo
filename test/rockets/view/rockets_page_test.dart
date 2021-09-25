@@ -2,10 +2,11 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mock_navigator/mock_navigator.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
+import 'package:spacex_demo/rocket_details/view/rocket_details_page.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 import '../../helpers/helpers.dart';
@@ -14,12 +15,6 @@ class MockRocketRepository extends Mock implements RocketRepository {}
 
 class MockRocketsCubit extends MockCubit<RocketsState> implements RocketsCubit {
 }
-
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
 
 void main() {
   final rockets = List.generate(
@@ -43,9 +38,19 @@ void main() {
           .thenAnswer((_) async => rockets);
     });
 
-    testWidgets('renders RocketsView', (tester) async {
+    test(
+      'has route',
+      () => expect(
+        RocketsPage.route(),
+        isA<MaterialPageRoute<void>>(),
+      ),
+    );
+
+    testWidgets('renders RocketView', (tester) async {
       await tester.pumpApp(
-        const RocketsPage(),
+        Navigator(
+          onGenerateRoute: (_) => RocketsPage.route(),
+        ),
         rocketRepository: rocketRepository,
       );
       expect(find.byType(RocketsView), findsOneWidget);
@@ -60,12 +65,12 @@ void main() {
       rocketsCubit = MockRocketsCubit();
 
       navigator = MockNavigator();
-      when(() => navigator.push(any())).thenAnswer((_) async => null);
+      when(() => navigator.push(any(that: isRoute<RocketDetailsPage?>())))
+          .thenAnswer((_) async {});
     });
 
     setUpAll(() {
       registerFallbackValue<RocketsState>(const RocketsState());
-      registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
@@ -168,15 +173,15 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketsCubit,
-            child: MockNavigatorProvider(
-              navigator: navigator,
-              child: RocketsView(),
-            ),
+            child: RocketsView(),
           ),
+          navigator: navigator,
         );
 
         await tester.tap(find.text(rockets.first.name));
-        verify(() => navigator.push(any())).called(1);
+
+        verify(() => navigator.push(any(that: isRoute<RocketDetailsPage?>())))
+            .called(1);
       },
     );
   });

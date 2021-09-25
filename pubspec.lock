@@ -252,22 +252,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  mock_navigator:
+  mockingjay:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: "66086ffedfca1a56baa1670e970dfe3b94bd6848"
-      resolved-ref: "66086ffedfca1a56baa1670e970dfe3b94bd6848"
-      url: "https://github.com/jeroen-meijer/mock_navigator"
-    source: git
-    version: "0.0.1"
+      name: mockingjay
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   mocktail:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: mocktail
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.4"
   mocktail_image_network:
     dependency: "direct dev"
     description:
