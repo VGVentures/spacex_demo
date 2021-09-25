@@ -74,7 +74,6 @@ class SpaceXApiClient {
     }
   }
 
-  // TODO: HOW DO YOU DESCRIBE private METHODS?
   Future<List<dynamic>> _get(Uri uri) async {
     http.Response response;
 

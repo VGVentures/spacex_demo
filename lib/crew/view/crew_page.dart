@@ -2,6 +2,7 @@ import 'package:crew_member_repository/crew_member_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_demo/crew/cubit/crew_cubit.dart';
+import 'package:spacex_demo/crew_member_details/crew_member_details.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
 
 class CrewPage extends StatelessWidget {
@@ -66,11 +67,6 @@ class _Content extends StatelessWidget {
           child: Text(l10n.crewFetchErrorMessage),
         );
       case CrewStatus.success:
-        context
-            .select((CrewCubit cubit) => cubit.state.crewMembers!)
-            .forEach((member) {
-          print(member.name);
-        });
         return const _CrewMembersList(
           key: Key('crewView_success_crewMemberList'),
         );
@@ -92,11 +88,9 @@ class _CrewMembersList extends StatelessWidget {
           ListTile(
             isThreeLine: true,
             onTap: () {
-              // TODO: PUSH CrewMemberDetailsPage
-              print('All good');
-              // Navigator.of(context).push(
-              //   CrewMemberDetailsPage.route(crewMember: crewMember),
-              // );
+              Navigator.of(context).push(
+                CrewMemberDetailsPage.route(crewMember: crewMember),
+              );
             },
             leading: CircleAvatar(
               backgroundImage: NetworkImage(crewMember.image),
