@@ -17,7 +17,7 @@ class SpaceXTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         image: DecorationImage(
           image: AssetImage(_image),
           fit: BoxFit.cover,
@@ -35,8 +35,8 @@ class SpaceXTile extends StatelessWidget {
                   // ignore: prefer_const_constructors
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
                     ),
                     color: Colors.black.withOpacity(0.5),
                   ),
