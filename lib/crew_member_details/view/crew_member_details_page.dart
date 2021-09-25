@@ -13,7 +13,7 @@ class CrewMemberDetailsPage extends StatelessWidget {
     return MaterialPageRoute(
       builder: (_) => BlocProvider(
         create: (_) => CrewMemberDetailsCubit(crewMember: crewMember),
-        child: const CrewMemberDetailsView(),
+        child: const CrewMemberDetailsPage(),
       ),
     );
   }

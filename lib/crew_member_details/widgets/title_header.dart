@@ -38,6 +38,7 @@ class TitleHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(
+            key: const Key('crewMemberDetailsPage_titleHeader_agencyRichText'),
             text: TextSpan(
               text: '${l10n.crewMemberDetailsAgency}: ',
               style: const TextStyle(
@@ -54,6 +55,7 @@ class TitleHeader extends StatelessWidget {
             ),
           ),
           RichText(
+            key: const Key('crewMemberDetailsPage_titleHeader_launchRichText'),
             text: TextSpan(
               text: '${l10n.crewMemberDetailsParticipatedLaunches} ',
               style: const TextStyle(color: Color(0xFFB3B3B3)),

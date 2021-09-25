@@ -8,7 +8,7 @@ import 'package:spacex_demo/rocket_details/rocket_details.dart';
 class MockRocketRepository extends Mock implements RocketRepository {}
 
 void main() {
-  group('RocketDetailsCRocketDetailsCubit', () {
+  group('RocketDetailsCubit', () {
     const rocket = Rocket(
       id: '0',
       name: 'mock-rocket-name',

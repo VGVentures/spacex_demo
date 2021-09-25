@@ -151,12 +151,14 @@ void main() {
           ),
         );
 
-        await mockNetworkImages(() async => await tester.pumpApp(
-              BlocProvider.value(
-                value: crewCubit,
-                child: const CrewView(),
-              ),
-            ));
+        await mockNetworkImages(() async {
+          await tester.pumpApp(
+            BlocProvider.value(
+              value: crewCubit,
+              child: const CrewView(),
+            ),
+          );
+        });
 
         expect(find.byKey(key), findsOneWidget);
         expect(find.byType(ListTile), findsNWidgets(crewMembers.length));
