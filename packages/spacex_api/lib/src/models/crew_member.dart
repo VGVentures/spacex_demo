@@ -62,4 +62,7 @@ class CrewMember extends Equatable {
 
   @override
   bool get stringify => true;
+
+  @override
+  String toString() => 'Crew Member($id, $name)';
 }
