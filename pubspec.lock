@@ -552,5 +552,9 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
+<<<<<<< HEAD
   dart: ">=2.14.0-0 <3.0.0"
+=======
+  dart: ">=2.13.0 <3.0.0"
+>>>>>>> afl-new-features
   flutter: ">=1.22.0"
