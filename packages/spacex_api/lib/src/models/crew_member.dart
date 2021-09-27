@@ -39,7 +39,7 @@ class CrewMember extends Equatable {
   /// The crew member's information on wikipedia
   final String wikipedia;
 
-  /// List of launches IDs a member has been a part of
+  /// List of IDs of launches this member has been a part of
   final List<String> launches;
 
   @override
