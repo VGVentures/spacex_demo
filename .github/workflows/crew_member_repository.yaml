@@ -13,11 +13,13 @@ jobs:
         working-directory: packages/crew_member_repository
 
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:2.12.3
 
     steps:
       - uses: actions/checkout@v2
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 2.14.2
 
       - name: Install Dependencies
         run: dart pub get
