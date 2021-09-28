@@ -51,7 +51,7 @@ void main() {
     test('has concise toString', () {
       expect(
         Length(meters: 1, feet: 1).toString(),
-        equals('Length(1 m, 1 ft)'),
+        equals('Length(1.0 m, 1.0 ft)'),
       );
     });
   });
@@ -67,7 +67,7 @@ void main() {
     test('has concise toString', () {
       expect(
         Mass(kg: 1, lb: 1).toString(),
-        equals('Mass(1 kg, 1 lb)'),
+        equals('Mass(1.0 kg, 1.0 lb)'),
       );
     });
   });
