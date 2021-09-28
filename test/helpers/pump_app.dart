@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
@@ -13,7 +14,12 @@ extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
     RocketRepository? rocketRepository,
+    MockNavigator? navigator,
   }) {
+    final innerChild = Scaffold(
+      body: widget,
+    );
+
     return pumpWidget(
       MultiRepositoryProvider(
         providers: [
@@ -27,9 +33,12 @@ extension PumpApp on WidgetTester {
             GlobalMaterialLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
-          home: Scaffold(
-            body: widget,
-          ),
+          home: navigator == null
+              ? innerChild
+              : MockNavigatorProvider(
+                  navigator: navigator,
+                  child: innerChild,
+                ),
         ),
       ),
     );

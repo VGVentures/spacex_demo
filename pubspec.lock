@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.1"
+  bloc_test:
+    dependency: "direct dev"
+    description:
+      name: bloc_test
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.2.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -238,15 +245,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  mock_navigator:
+  mockingjay:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: "66086ffedfca1a56baa1670e970dfe3b94bd6848"
-      resolved-ref: "66086ffedfca1a56baa1670e970dfe3b94bd6848"
-      url: "https://github.com/jeroen-meijer/mock_navigator"
-    source: git
-    version: "0.0.1"
+      name: mockingjay
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   mocktail:
     dependency: "direct dev"
     description:
@@ -254,6 +259,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
+  mocktail_image_network:
+    dependency: "direct dev"
+    description:
+      name: mocktail_image_network
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   nested:
     dependency: transitive
     description:
@@ -463,7 +475,7 @@ packages:
     source: hosted
     version: "2.0.2"
   url_launcher_platform_interface:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: url_launcher_platform_interface
       url: "https://pub.dartlang.org"

@@ -19,7 +19,10 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v1.4.0
         with:
-          flutter-version: 2.5.1
+          channel: stable
+
+      - name: "[TEMPORARY] Upgrade Flutter"
+        run: flutter upgrade
 
       - name: Install Dependencies
         run: flutter packages get
