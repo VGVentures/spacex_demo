@@ -22,7 +22,7 @@ extension PumpApp on WidgetTester {
           )
         ],
         child: MaterialApp(
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
           ],

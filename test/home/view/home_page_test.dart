@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mock_navigator/mock_navigator.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
@@ -27,9 +27,9 @@ void main() {
       id: '$i',
       name: 'mock-rocket-name-$i',
       description: 'mock-rocket-description-$i',
-      height: const Length(meters: 1.0, feet: 1.0),
-      diameter: const Length(meters: 1.0, feet: 1.0),
-      mass: const Mass(kg: 1.0, lb: 1.0),
+      height: const Length(meters: 1, feet: 1),
+      diameter: const Length(meters: 1, feet: 1),
+      mass: const Mass(kg: 1, lb: 1),
     ),
   );
 
@@ -70,16 +70,12 @@ void main() {
     testWidgets('renders empty page when status is initial', (tester) async {
       const key = Key('homeView_initial_sizedBox');
 
-      when(() => homeCubit.state).thenReturn(
-        const HomeState(
-          status: HomeStatus.initial,
-        ),
-      );
+      when(() => homeCubit.state).thenReturn(const HomeState());
 
       await tester.pumpApp(
         BlocProvider.value(
           value: homeCubit,
-          child: HomeView(),
+          child: const HomeView(),
         ),
       );
 
@@ -100,7 +96,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -122,7 +118,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -145,7 +141,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -169,7 +165,7 @@ void main() {
             value: homeCubit,
             child: MockNavigatorProvider(
               navigator: navigator,
-              child: HomeView(),
+              child: const HomeView(),
             ),
           ),
         );

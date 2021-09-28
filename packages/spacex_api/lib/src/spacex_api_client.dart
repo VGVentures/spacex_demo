@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:spacex_api/spacex_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import 'package:spacex_api/spacex_api.dart';
 
 /// Thrown if an exception occurs while making an `http` request.
 class HttpException implements Exception {}
@@ -69,7 +69,7 @@ class SpaceXApiClient {
 
     try {
       return body
-          .map((item) => Rocket.fromJson(item as Map<String, dynamic>))
+          .map((dynamic item) => Rocket.fromJson(item as Map<String, dynamic>))
           .toList();
     } catch (_) {
       throw JsonDeserializationException();
