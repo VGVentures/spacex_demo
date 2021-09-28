@@ -35,9 +35,7 @@ void main() {
         HomeCubit(
           rocketRepository: rocketRepository,
         ).state,
-        equals(HomeState(
-          
-        )),
+        equals(HomeState()),
       );
     });
 

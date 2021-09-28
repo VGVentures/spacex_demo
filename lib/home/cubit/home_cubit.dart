@@ -8,7 +8,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit({
     required RocketRepository rocketRepository,
-  })   : _rocketRepository = rocketRepository,
+  })  : _rocketRepository = rocketRepository,
         super(const HomeState());
 
   final RocketRepository _rocketRepository;
