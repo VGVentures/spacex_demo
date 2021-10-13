@@ -32,7 +32,10 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          brightness: Brightness.dark,
+          secondary: Colors.white,
+        ),
         primaryColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
         dividerTheme: const DividerThemeData(
@@ -45,7 +48,6 @@ class AppView extends StatelessWidget {
             onPrimary: Colors.black,
           ),
         ),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
