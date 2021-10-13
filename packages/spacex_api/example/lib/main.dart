@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:spacex_api/spacex_api.dart';
 
-void main() async {
+Future<void> main() async {
   final spaceXApiClient = SpaceXApiClient();
 
   try {
