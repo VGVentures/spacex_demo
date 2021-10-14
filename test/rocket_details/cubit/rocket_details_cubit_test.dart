@@ -13,9 +13,9 @@ void main() {
       id: '0',
       name: 'mock-rocket-name',
       description: 'mock-rocket-description',
-      height: Length(meters: 1.0, feet: 1.0),
-      diameter: Length(meters: 1.0, feet: 1.0),
-      mass: Mass(kg: 1.0, lb: 1.0),
+      height: Length(meters: 1, feet: 1),
+      diameter: Length(meters: 1, feet: 1),
+      mass: Mass(kg: 1, lb: 1),
     );
 
     test('initial state is correct', () {

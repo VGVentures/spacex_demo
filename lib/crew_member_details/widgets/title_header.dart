@@ -21,7 +21,7 @@ class TitleHeader extends StatelessWidget {
             crewMember.name,
             style: Theme.of(context).textTheme.headline5,
           ),
-          const SizedBox(width: 4.0),
+          const SizedBox(width: 4),
           if (crewMember.status == 'active')
             const Icon(
               Icons.check,
@@ -46,7 +46,7 @@ class TitleHeader extends StatelessWidget {
               ),
               children: <TextSpan>[
                 TextSpan(
-                  text: '${crewMember.agency}',
+                  text: crewMember.agency,
                   style: const TextStyle(
                     color: Colors.white,
                   ),

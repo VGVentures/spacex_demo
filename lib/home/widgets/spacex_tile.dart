@@ -41,7 +41,7 @@ class SpaceXTile extends StatelessWidget {
                     color: Colors.black.withOpacity(0.5),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: const EdgeInsets.only(left: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

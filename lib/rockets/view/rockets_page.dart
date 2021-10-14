@@ -20,12 +20,14 @@ class RocketsPage extends StatelessWidget {
       create: (_) => RocketsCubit(
         rocketRepository: context.read<RocketRepository>(),
       )..fetchAllRockets(),
-      child: RocketsView(),
+      child: const RocketsView(),
     );
   }
 }
 
 class RocketsView extends StatelessWidget {
+  const RocketsView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

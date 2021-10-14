@@ -41,21 +41,21 @@ class CrewMemberDetailsView extends StatelessWidget {
       body: Stack(
         children: [
           ListView(
-            children: [
-              const ImageHeader(
+            children: const [
+              ImageHeader(
                 key: Key('crewMemberDetailsPage_imageHeader'),
               ),
-              const TitleHeader(
+              TitleHeader(
                 key: Key('crewMemberDetailsPage_titleHeader'),
               ),
             ],
           ),
           Positioned(
-            left: 16.0,
-            bottom: 16.0,
-            right: 16.0,
+            left: 16,
+            bottom: 16,
+            right: 16,
             child: SizedBox(
-              height: 64.0,
+              height: 64,
               child: ElevatedButton(
                 key: const Key(
                   'crewMemberDetailsPage_openWikipedia_elevatedButton',

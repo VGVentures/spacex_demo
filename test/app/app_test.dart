@@ -35,7 +35,7 @@ void main() {
   group('AppView', () {
     testWidgets('renders HomePage', (tester) async {
       await tester.pumpApp(
-        AppView(),
+        const AppView(),
         rocketRepository: rocketRepository,
       );
 

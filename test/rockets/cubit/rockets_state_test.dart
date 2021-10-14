@@ -8,11 +8,11 @@ void main() {
       expect(
         RocketsState(
           status: RocketsStatus.success,
-          rockets: [],
+          rockets: const [],
         ),
         RocketsState(
           status: RocketsStatus.success,
-          rockets: [],
+          rockets: const [],
         ),
       );
     });

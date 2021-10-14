@@ -80,9 +80,7 @@ void main() {
       const key = Key('crewView_initial_sizedBox');
 
       when(() => crewCubit.state).thenReturn(
-        const CrewState(
-          status: CrewStatus.initial,
-        ),
+        const CrewState(),
       );
 
       await tester.pumpApp(

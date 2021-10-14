@@ -7,11 +7,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeView();
+    return const HomeView();
   }
 }
 
 class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

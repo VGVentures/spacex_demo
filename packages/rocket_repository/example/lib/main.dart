@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:rocket_repository/rocket_repository.dart';
 
-void main() async {
+Future<void> main() async {
   final rocketRepository = RocketRepository();
 
   try {

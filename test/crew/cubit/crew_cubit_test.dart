@@ -36,7 +36,7 @@ void main() {
       () => {
         expect(
           CrewCubit(crewMemberRepository: crewMemberRepository).state,
-          equals(const CrewState(status: CrewStatus.initial)),
+          equals(const CrewState()),
         )
       },
     );

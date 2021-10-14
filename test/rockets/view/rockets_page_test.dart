@@ -22,9 +22,9 @@ void main() {
       id: '$i',
       name: 'mock-rocket-name-$i',
       description: 'mock-rocket-description-$i',
-      height: const Length(meters: 1.0, feet: 1.0),
-      diameter: const Length(meters: 1.0, feet: 1.0),
-      mass: const Mass(kg: 1.0, lb: 1.0),
+      height: const Length(meters: 1, feet: 1),
+      diameter: const Length(meters: 1, feet: 1),
+      mass: const Mass(kg: 1, lb: 1),
     ),
   );
 
@@ -76,15 +76,13 @@ void main() {
       const key = Key('rocketsView_initial_sizedBox');
 
       when(() => rocketsCubit.state).thenReturn(
-        const RocketsState(
-          status: RocketsStatus.initial,
-        ),
+        const RocketsState(),
       );
 
       await tester.pumpApp(
         BlocProvider.value(
           value: rocketsCubit,
-          child: RocketsView(),
+          child: const RocketsView(),
         ),
       );
 
@@ -105,7 +103,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketsCubit,
-            child: RocketsView(),
+            child: const RocketsView(),
           ),
         );
 
@@ -127,7 +125,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketsCubit,
-            child: RocketsView(),
+            child: const RocketsView(),
           ),
         );
 
@@ -150,7 +148,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketsCubit,
-            child: RocketsView(),
+            child: const RocketsView(),
           ),
         );
 
@@ -172,7 +170,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketsCubit,
-            child: RocketsView(),
+            child: const RocketsView(),
           ),
           navigator: navigator,
         );

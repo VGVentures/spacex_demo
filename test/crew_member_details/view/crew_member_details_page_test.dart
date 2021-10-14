@@ -235,7 +235,6 @@ void main() {
               enableDomStorage: false,
               universalLinksOnly: false,
               headers: const <String, String>{},
-              webOnlyWindowName: null,
             ),
           ).called(1);
         },

@@ -20,6 +20,10 @@ extension PumpApp on WidgetTester {
     RocketRepository? rocketRepository,
     CrewMemberRepository? crewMemberRepository,
   }) {
+    final innerChild = Scaffold(
+      body: widget,
+    );
+
     return pumpWidget(
       MultiRepositoryProvider(
         providers: [
@@ -31,17 +35,17 @@ extension PumpApp on WidgetTester {
           )
         ],
         child: MaterialApp(
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
-          home: MockNavigatorProvider(
-            navigator: navigator ?? MockNavigator(),
-            child: Scaffold(
-              body: widget,
-            ),
-          ),
+          home: navigator == null
+              ? innerChild
+              : MockNavigatorProvider(
+                  navigator: navigator,
+                  child: innerChild,
+                ),
         ),
       ),
     );

@@ -16,7 +16,7 @@ class ImageHeader extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(8.0),
+            bottom: Radius.circular(8),
           ),
           image: DecorationImage(
             image: NetworkImage(imageUrl),
