@@ -14,12 +14,14 @@ class HomePage extends StatelessWidget {
       create: (_) => HomeCubit(
         rocketRepository: context.read<RocketRepository>(),
       )..fetchAllRockets(),
-      child: HomeView(),
+      child: const HomeView(),
     );
   }
 }
 
 class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

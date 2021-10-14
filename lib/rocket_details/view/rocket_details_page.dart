@@ -20,11 +20,13 @@ class RocketDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RocketDetailsView();
+    return const RocketDetailsView();
   }
 }
 
 class RocketDetailsView extends StatelessWidget {
+  const RocketDetailsView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -49,25 +51,25 @@ class RocketDetailsView extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: 16.0,
-                  right: 16.0,
-                  bottom: 16.0,
+                  left: 16,
+                  right: 16,
+                  bottom: 16,
                 ),
                 child: _DescriptionSection(),
               ),
               if (rocket.wikipedia != null)
                 const SizedBox(
-                  height: 80.0,
+                  height: 80,
                 ),
             ],
           ),
           if (rocket.wikipedia != null)
             Positioned(
-              left: 16.0,
-              bottom: 16.0,
-              right: 16.0,
+              left: 16,
+              bottom: 16,
+              right: 16,
               child: SizedBox(
-                height: 64.0,
+                height: 64,
                 child: ElevatedButton(
                   key: const Key(
                     'rocketDetailsPage_openWikipedia_elevatedButton',
@@ -99,11 +101,11 @@ class _ImageHeader extends StatelessWidget {
     );
 
     return SizedBox(
-      height: 240.0,
+      height: 240,
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(8.0),
+            bottom: Radius.circular(8),
           ),
           image: DecorationImage(
             image: NetworkImage(imageUrl),
@@ -133,7 +135,7 @@ class _TitleHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.headline5,
           ),
           if (rocket.active != null) ...[
-            const SizedBox(width: 4.0),
+            const SizedBox(width: 4),
             if (rocket.active!)
               const Icon(
                 Icons.check,

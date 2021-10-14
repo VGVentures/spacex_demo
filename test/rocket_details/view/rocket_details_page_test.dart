@@ -26,9 +26,9 @@ void main() {
     id: '0',
     name: 'mock-rocket-name',
     description: 'mock-rocket-description',
-    height: const Length(meters: 1.0, feet: 1.0),
-    diameter: const Length(meters: 1.0, feet: 1.0),
-    mass: const Mass(kg: 1.0, lb: 1.0),
+    height: const Length(meters: 1, feet: 1),
+    diameter: const Length(meters: 1, feet: 1),
+    mass: const Mass(kg: 1, lb: 1),
     flickrImages: const ['https://example.com/'],
     active: true,
     firstFlight: DateTime(2021, 12, 31),
@@ -93,7 +93,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketDetailsCubit,
-            child: RocketDetailsView(),
+            child: const RocketDetailsView(),
           ),
         );
       });
@@ -109,7 +109,7 @@ void main() {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
-              child: RocketDetailsView(),
+              child: const RocketDetailsView(),
             ),
           );
         });
@@ -129,7 +129,7 @@ void main() {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
-              child: RocketDetailsView(),
+              child: const RocketDetailsView(),
             ),
           );
         });
@@ -144,9 +144,9 @@ void main() {
               id: '0',
               name: 'mock-rocket-name',
               description: 'mock-rocket-description',
-              height: Length(meters: 1.0, feet: 1.0),
-              diameter: Length(meters: 1.0, feet: 1.0),
-              mass: Mass(kg: 1.0, lb: 1.0),
+              height: Length(meters: 1, feet: 1),
+              diameter: Length(meters: 1, feet: 1),
+              mass: Mass(kg: 1, lb: 1),
               active: false,
             ),
           ),
@@ -156,7 +156,7 @@ void main() {
           await tester.pumpApp(
             BlocProvider.value(
               value: rocketDetailsCubit,
-              child: RocketDetailsView(),
+              child: const RocketDetailsView(),
             ),
           );
         });
@@ -171,7 +171,7 @@ void main() {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
-                child: RocketDetailsView(),
+                child: const RocketDetailsView(),
               ),
             );
           });
@@ -186,7 +186,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: rocketDetailsCubit,
-            child: RocketDetailsView(),
+            child: const RocketDetailsView(),
           ),
         );
       });
@@ -206,10 +206,9 @@ void main() {
                 id: '0',
                 name: 'mock-rocket-name',
                 description: 'mock-rocket-description',
-                height: Length(meters: 1.0, feet: 1.0),
-                diameter: Length(meters: 1.0, feet: 1.0),
-                mass: Mass(kg: 1.0, lb: 1.0),
-                wikipedia: null,
+                height: Length(meters: 1, feet: 1),
+                diameter: Length(meters: 1, feet: 1),
+                mass: Mass(kg: 1, lb: 1),
               ),
             ),
           );
@@ -218,7 +217,7 @@ void main() {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
-                child: RocketDetailsView(),
+                child: const RocketDetailsView(),
               ),
             );
           });
@@ -234,7 +233,7 @@ void main() {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
-                child: RocketDetailsView(),
+                child: const RocketDetailsView(),
               ),
             );
           });
@@ -250,7 +249,7 @@ void main() {
             await tester.pumpApp(
               BlocProvider.value(
                 value: rocketDetailsCubit,
-                child: RocketDetailsView(),
+                child: const RocketDetailsView(),
               ),
             );
           });
@@ -268,7 +267,6 @@ void main() {
               enableDomStorage: false,
               universalLinksOnly: false,
               headers: const <String, String>{},
-              webOnlyWindowName: null,
             ),
           ).called(1);
         },

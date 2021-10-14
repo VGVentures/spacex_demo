@@ -22,9 +22,9 @@ void main() {
       id: '$i',
       name: 'mock-rocket-name-$i',
       description: 'mock-rocket-description-$i',
-      height: const Length(meters: 1.0, feet: 1.0),
-      diameter: const Length(meters: 1.0, feet: 1.0),
-      mass: const Mass(kg: 1.0, lb: 1.0),
+      height: const Length(meters: 1, feet: 1),
+      diameter: const Length(meters: 1, feet: 1),
+      mass: const Mass(kg: 1, lb: 1),
     ),
   );
 
@@ -67,7 +67,7 @@ void main() {
   group('AppView', () {
     testWidgets('renders HomePage', (tester) async {
       await tester.pumpApp(
-        AppView(),
+        const AppView(),
         rocketRepository: rocketRepository,
       );
 
