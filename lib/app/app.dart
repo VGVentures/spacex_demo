@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   const App({
     Key? key,
     required RocketRepository rocketRepository,
-  })   : _rocketRepository = rocketRepository,
+  })  : _rocketRepository = rocketRepository,
         super(key: key);
 
   final RocketRepository _rocketRepository;
@@ -20,23 +20,27 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(value: _rocketRepository),
       ],
-      child: AppView(),
+      child: const AppView(),
     );
   }
 }
 
 class AppView extends StatelessWidget {
+  const AppView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          brightness: Brightness.dark,
+          secondary: Colors.white,
+        ),
         primaryColor: Colors.black,
-        accentColor: Colors.white,
         scaffoldBackgroundColor: Colors.black,
         dividerTheme: const DividerThemeData(
-          indent: 16.0,
-          space: 0.0,
+          indent: 16,
+          space: 0,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -45,7 +49,7 @@ class AppView extends StatelessWidget {
           ),
         ),
       ),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],

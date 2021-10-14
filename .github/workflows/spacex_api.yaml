@@ -13,11 +13,14 @@ jobs:
         working-directory: packages/spacex_api
 
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:2.12.3
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 2.14.2
 
       - name: Install Dependencies
         run: pub get

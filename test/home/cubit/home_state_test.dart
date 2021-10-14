@@ -8,11 +8,11 @@ void main() {
       expect(
         HomeState(
           status: HomeStatus.success,
-          rockets: [],
+          rockets: const [],
         ),
         HomeState(
           status: HomeStatus.success,
-          rockets: [],
+          rockets: const [],
         ),
       );
     });

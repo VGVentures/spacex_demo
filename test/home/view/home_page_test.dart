@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mock_navigator/mock_navigator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
@@ -14,12 +14,6 @@ class MockRocketRepository extends Mock implements RocketRepository {}
 
 class MockHomeCubit extends MockCubit<HomeState> implements HomeCubit {}
 
-class MockNavigator extends Mock
-    with MockNavigatorDiagnosticsMixin
-    implements MockNavigatorBase {}
-
-class FakeRoute<T> extends Fake implements Route<T> {}
-
 void main() {
   final rockets = List.generate(
     3,
@@ -27,9 +21,9 @@ void main() {
       id: '$i',
       name: 'mock-rocket-name-$i',
       description: 'mock-rocket-description-$i',
-      height: const Length(meters: 1.0, feet: 1.0),
-      diameter: const Length(meters: 1.0, feet: 1.0),
-      mass: const Mass(kg: 1.0, lb: 1.0),
+      height: const Length(meters: 1, feet: 1),
+      diameter: const Length(meters: 1, feet: 1),
+      mass: const Mass(kg: 1, lb: 1),
     ),
   );
 
@@ -64,22 +58,17 @@ void main() {
 
     setUpAll(() {
       registerFallbackValue<HomeState>(const HomeState());
-      registerFallbackValue<Route<Object?>>(FakeRoute<Object?>());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
       const key = Key('homeView_initial_sizedBox');
 
-      when(() => homeCubit.state).thenReturn(
-        const HomeState(
-          status: HomeStatus.initial,
-        ),
-      );
+      when(() => homeCubit.state).thenReturn(const HomeState());
 
       await tester.pumpApp(
         BlocProvider.value(
           value: homeCubit,
-          child: HomeView(),
+          child: const HomeView(),
         ),
       );
 
@@ -100,7 +89,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -122,7 +111,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -145,7 +134,7 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: HomeView(),
+            child: const HomeView(),
           ),
         );
 
@@ -167,11 +156,9 @@ void main() {
         await tester.pumpApp(
           BlocProvider.value(
             value: homeCubit,
-            child: MockNavigatorProvider(
-              navigator: navigator,
-              child: HomeView(),
-            ),
+            child: const HomeView(),
           ),
+          navigator: navigator,
         );
 
         await tester.tap(find.text(rockets.first.name));
