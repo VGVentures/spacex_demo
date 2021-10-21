@@ -151,9 +151,11 @@ class _TitleHeader extends StatelessWidget {
       ),
       subtitle: rocket.firstFlight == null
           ? null
-          : Text(l10n.rocketDetailsFirstFlightSubtitle(
-              DateFormat('dd-MM-yyyy').format(rocket.firstFlight!),
-            )),
+          : Text(
+              l10n.rocketDetailsFirstFlightSubtitle(
+                DateFormat('dd-MM-yyyy').format(rocket.firstFlight!),
+              ),
+            ),
     );
   }
 }

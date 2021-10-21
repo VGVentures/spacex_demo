@@ -14,22 +14,28 @@ class RocketsCubit extends Cubit<RocketsState> {
   final RocketRepository _rocketRepository;
 
   Future<void> fetchAllRockets() async {
-    emit(RocketsState(
-      status: RocketsStatus.loading,
-      rockets: state.rockets,
-    ));
+    emit(
+      RocketsState(
+        status: RocketsStatus.loading,
+        rockets: state.rockets,
+      ),
+    );
 
     try {
       final rockets = await _rocketRepository.fetchAllRockets();
-      emit(RocketsState(
-        status: RocketsStatus.success,
-        rockets: rockets,
-      ));
+      emit(
+        RocketsState(
+          status: RocketsStatus.success,
+          rockets: rockets,
+        ),
+      );
     } on Exception {
-      emit(RocketsState(
-        status: RocketsStatus.failure,
-        rockets: state.rockets,
-      ));
+      emit(
+        RocketsState(
+          status: RocketsStatus.failure,
+          rockets: state.rockets,
+        ),
+      );
     }
   }
 }

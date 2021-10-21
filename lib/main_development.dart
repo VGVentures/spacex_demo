@@ -15,10 +15,12 @@ void main() {
   final crewMemberRepository = CrewMemberRepository();
 
   runZonedGuarded(
-    () => runApp(App(
-      rocketRepository: rocketRepository,
-      crewMemberRepository: crewMemberRepository,
-    )),
+    () => runApp(
+      App(
+        rocketRepository: rocketRepository,
+        crewMemberRepository: crewMemberRepository,
+      ),
+    ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

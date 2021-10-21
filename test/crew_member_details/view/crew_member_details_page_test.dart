@@ -65,8 +65,10 @@ void main() {
 
   group('CrewMemberDetailsPage', () {
     test('has route', () {
-      expect(CrewMemberDetailsPage.route(crewMember: crewMember),
-          isA<MaterialPageRoute<void>>());
+      expect(
+        CrewMemberDetailsPage.route(crewMember: crewMember),
+        isA<MaterialPageRoute<void>>(),
+      );
     });
 
     testWidgets('renders CrewMemberDetailsView on route', (tester) async {

@@ -47,13 +47,15 @@ void main() {
     });
 
     testWidgets(
-        'homePageContent_rocket_spaceXCategoryCard navigates to RocketsPage on tap',
-        (tester) async {
+        'homePageContent_rocket_spaceXCategoryCard navigates '
+        'to RocketsPage on tap', (tester) async {
       await tester.pumpApp(const HomePageContent(), navigator: navigator);
 
-      await tester.tap(find.byKey(
-        const Key('homePageContent_rocket_spaceXCategoryCard'),
-      ));
+      await tester.tap(
+        find.byKey(
+          const Key('homePageContent_rocket_spaceXCategoryCard'),
+        ),
+      );
 
       verify(() => navigator.push(any(that: isRoute<RocketsPage?>())))
           .called(1);
@@ -64,9 +66,11 @@ void main() {
         (tester) async {
       await tester.pumpApp(const HomePageContent(), navigator: navigator);
 
-      await tester.tap(find.byKey(
-        const Key('homePageContent_crew_spaceXCategoryCard'),
-      ));
+      await tester.tap(
+        find.byKey(
+          const Key('homePageContent_crew_spaceXCategoryCard'),
+        ),
+      );
 
       verify(() => navigator.push(any(that: isRoute<CrewPage?>()))).called(1);
     });

@@ -183,9 +183,9 @@ void main() {
 
         await tester.tap(find.text(crewMembers.first.name));
 
-        verify(() =>
-                navigator.push(any(that: isRoute<CrewMemberDetailsPage?>())))
-            .called(1);
+        verify(
+          () => navigator.push(any(that: isRoute<CrewMemberDetailsPage?>())),
+        ).called(1);
       },
     );
   });

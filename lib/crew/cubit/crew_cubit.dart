@@ -13,22 +13,28 @@ class CrewCubit extends Cubit<CrewState> {
   final CrewMemberRepository _crewMemberRepository;
 
   Future<void> fetchAllCrewMembers() async {
-    emit(CrewState(
-      status: CrewStatus.loading,
-      crewMembers: state.crewMembers,
-    ));
+    emit(
+      CrewState(
+        status: CrewStatus.loading,
+        crewMembers: state.crewMembers,
+      ),
+    );
 
     try {
       final crewMembers = await _crewMemberRepository.fetchAllCrewMembers();
-      emit(CrewState(
-        status: CrewStatus.success,
-        crewMembers: crewMembers,
-      ));
+      emit(
+        CrewState(
+          status: CrewStatus.success,
+          crewMembers: crewMembers,
+        ),
+      );
     } on Exception {
-      emit(CrewState(
-        status: CrewStatus.failure,
-        crewMembers: state.crewMembers,
-      ));
+      emit(
+        CrewState(
+          status: CrewStatus.failure,
+          crewMembers: state.crewMembers,
+        ),
+      );
     }
   }
 }
