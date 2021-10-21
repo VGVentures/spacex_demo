@@ -1,0 +1,17 @@
+name: crew_member_repository
+description: A Dart package to manage the crew domain
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  spacex_api:
+    path: ../spacex_api
+
+dev_dependencies:
+  coverage: ^1.0.2
+  mocktail: ^0.1.1
+  test: ^1.17.0
+  very_good_analysis: ^2.3.0

@@ -98,7 +98,14 @@ packages:
       name: coverage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.1"
+  crew_member_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/crew_member_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   crypto:
     dependency: transitive
     description:
@@ -515,7 +522,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.3.0"
+    version: "6.2.0"
   watcher:
     dependency: transitive
     description:

@@ -10,6 +10,8 @@ environment:
 
 dependencies:
   bloc: ^7.2.1
+  crew_member_repository:
+    path: packages/crew_member_repository
   flutter:
     sdk: flutter
   flutter_bloc: ^7.3.0

@@ -1,3 +1,4 @@
+import 'package:crew_member_repository/crew_member_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,16 +10,20 @@ class App extends StatelessWidget {
   const App({
     Key? key,
     required RocketRepository rocketRepository,
+    required CrewMemberRepository crewMemberRepository,
   })  : _rocketRepository = rocketRepository,
+        _crewMemberRepository = crewMemberRepository,
         super(key: key);
 
   final RocketRepository _rocketRepository;
+  final CrewMemberRepository _crewMemberRepository;
 
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _rocketRepository),
+        RepositoryProvider.value(value: _crewMemberRepository),
       ],
       child: const AppView(),
     );

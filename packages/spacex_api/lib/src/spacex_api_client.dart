@@ -46,7 +46,35 @@ class SpaceXApiClient {
   /// REST call: `GET /rockets`
   Future<List<Rocket>> fetchAllRockets() async {
     final uri = Uri.https(authority, '/v4/rockets');
+    final responseBody = await _get(uri);
 
+    try {
+      return responseBody
+          .map((dynamic item) => Rocket.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      throw JsonDeserializationException();
+    }
+  }
+
+  /// Fetches all SpaceX crew members.
+  ///
+  /// REST call: `GET /crew`
+  Future<List<CrewMember>> fetchAllCrewMembers() async {
+    final uri = Uri.https(authority, '/v4/crew');
+    final responseBody = await _get(uri);
+
+    try {
+      return responseBody
+          .map((dynamic item) =>
+              CrewMember.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      throw JsonDeserializationException();
+    }
+  }
+
+  Future<List<dynamic>> _get(Uri uri) async {
     http.Response response;
 
     try {
@@ -59,20 +87,10 @@ class SpaceXApiClient {
       throw HttpRequestFailure(response.statusCode);
     }
 
-    List body;
-
     try {
-      body = json.decode(response.body) as List;
+      return json.decode(response.body) as List;
     } catch (_) {
       throw JsonDecodeException();
-    }
-
-    try {
-      return body
-          .map((dynamic item) => Rocket.fromJson(item as Map<String, dynamic>))
-          .toList();
-    } catch (_) {
-      throw JsonDeserializationException();
     }
   }
 }
