@@ -172,14 +172,15 @@ void main() {
             crewMembers: crewMembers,
           ),
         );
-
-        await tester.pumpApp(
-          BlocProvider.value(
-            value: crewCubit,
-            child: const CrewView(),
-          ),
-          navigator: navigator,
-        );
+        await mockNetworkImages(() async {
+          await tester.pumpApp(
+            BlocProvider.value(
+              value: crewCubit,
+              child: const CrewView(),
+            ),
+            navigator: navigator,
+          );
+        });
 
         await tester.tap(find.text(crewMembers.first.name));
 
