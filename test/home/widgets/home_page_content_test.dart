@@ -4,7 +4,7 @@ import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:spacex_demo/crew/crew.dart';
 import 'package:spacex_demo/home/widgets/home_page_content.dart';
-import 'package:spacex_demo/home/widgets/spacex_tile.dart';
+import 'package:spacex_demo/home/widgets/spacex_category_card.dart';
 import 'package:spacex_demo/rockets/view/rockets_page.dart';
 
 import '../../helpers/pump_app.dart';
@@ -25,44 +25,47 @@ void main() {
 
     testWidgets('number of SpaceXTile is correct', (tester) async {
       await tester.pumpApp(const HomePageContent());
-      expect(find.byType(SpaceXTile), findsNWidgets(2));
+      expect(find.byType(SpaceXCategoryCard), findsNWidgets(2));
     });
 
-    testWidgets('there is 1 homePageContent_rocketSpaceXTile', (tester) async {
+    testWidgets('there is 1 homePageContent_rocket_spaceXCategoryCard',
+        (tester) async {
       await tester.pumpApp(const HomePageContent());
       expect(
-        find.byKey(const Key('homePageContent_rocketSpaceXTile')),
+        find.byKey(const Key('homePageContent_rocket_spaceXCategoryCard')),
         findsOneWidget,
       );
     });
 
-    testWidgets('there is 1 homePageContent_crewSpaceXTile', (tester) async {
+    testWidgets('there is 1 homePageContent_crew_spaceXCategoryCard',
+        (tester) async {
       await tester.pumpApp(const HomePageContent());
       expect(
-        find.byKey(const Key('homePageContent_crewSpaceXTile')),
+        find.byKey(const Key('homePageContent_crew_spaceXCategoryCard')),
         findsOneWidget,
       );
     });
 
     testWidgets(
-        'homePageContent_rocketSpaceXTile navigates to RocketsPage on tap',
+        'homePageContent_rocket_spaceXCategoryCard navigates to RocketsPage on tap',
         (tester) async {
       await tester.pumpApp(const HomePageContent(), navigator: navigator);
 
       await tester.tap(find.byKey(
-        const Key('homePageContent_rocketSpaceXTile'),
+        const Key('homePageContent_rocket_spaceXCategoryCard'),
       ));
 
       verify(() => navigator.push(any(that: isRoute<RocketsPage?>())))
           .called(1);
     });
 
-    testWidgets('homePageContent_crewSpaceXTile navigates to CrewPage on tap',
+    testWidgets(
+        'homePageContent_crew_spaceXCategoryCard navigates to CrewPage on tap',
         (tester) async {
       await tester.pumpApp(const HomePageContent(), navigator: navigator);
 
       await tester.tap(find.byKey(
-        const Key('homePageContent_crewSpaceXTile'),
+        const Key('homePageContent_crew_spaceXCategoryCard'),
       ));
 
       verify(() => navigator.push(any(that: isRoute<CrewPage?>()))).called(1);
