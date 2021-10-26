@@ -27,7 +27,7 @@ void main() {
     });
 
     testWidgets(
-      'there is 1 homePageContent_rocket_spaceXCategoryCard',
+      'renders a category card for rockets',
       (tester) async {
         await tester.pumpApp(const HomePageContent());
         expect(
