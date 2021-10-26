@@ -7,7 +7,6 @@ import 'package:mockingjay/mockingjay.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/crew/crew.dart';
-import 'package:spacex_demo/crew_member_details/crew_member_details.dart';
 
 import '../../helpers/helpers.dart';
 
