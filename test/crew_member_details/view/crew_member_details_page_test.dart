@@ -64,12 +64,15 @@ void main() {
   });
 
   group('CrewMemberDetailsPage', () {
-    test('has route', () {
-      expect(
-        CrewMemberDetailsPage.route(crewMember: crewMember),
-        isA<MaterialPageRoute<void>>(),
-      );
-    });
+    test(
+      'has route',
+      () {
+        expect(
+          CrewMemberDetailsPage.route(crewMember: crewMember),
+          isA<MaterialPageRoute<void>>(),
+        );
+      },
+    );
 
     testWidgets('renders CrewMemberDetailsView on route', (tester) async {
       await mockNetworkImages(() async {
@@ -101,48 +104,52 @@ void main() {
     });
 
     group('title header', () {
-      testWidgets('renders check icon when crew member is active',
-          (tester) async {
-        await mockNetworkImages(() async {
-          await tester.pumpApp(
-            BlocProvider.value(
-              value: crewMemberDetailsCubit,
-              child: const CrewMemberDetailsView(),
+      testWidgets(
+        'renders check icon when crew member is active',
+        (tester) async {
+          await mockNetworkImages(() async {
+            await tester.pumpApp(
+              BlocProvider.value(
+                value: crewMemberDetailsCubit,
+                child: const CrewMemberDetailsView(),
+              ),
+            );
+          });
+
+          expect(find.byIcon(Icons.check), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'renders cross icon when crew member is inactive',
+        (tester) async {
+          when(() => crewMemberDetailsCubit.state).thenReturn(
+            const CrewMemberDetailsState(
+              crewMember: CrewMember(
+                id: '0',
+                name: 'Alejandro Ferrero',
+                status: 'inactive',
+                agency: 'Very Good Aliens',
+                image:
+                    'https://media-exp1.licdn.com/dms/image/C4D03AQHVNIVOMkwQaA/profile-displayphoto-shrink_200_200/0/1631637257882?e=1637193600&v=beta&t=jFm-Ckb0KS0Z5hJDbo3ZBSEZSYLHfllUf4N-IV2NDTc',
+                wikipedia: 'https://www.wikipedia.org/',
+                launches: ['Launch 1'],
+              ),
             ),
           );
-        });
 
-        expect(find.byIcon(Icons.check), findsOneWidget);
-      });
+          await mockNetworkImages(() async {
+            await tester.pumpApp(
+              BlocProvider.value(
+                value: crewMemberDetailsCubit,
+                child: const CrewMemberDetailsView(),
+              ),
+            );
+          });
 
-      testWidgets('renders cross icon when crew member is inactive',
-          (tester) async {
-        when(() => crewMemberDetailsCubit.state).thenReturn(
-          const CrewMemberDetailsState(
-            crewMember: CrewMember(
-              id: '0',
-              name: 'Alejandro Ferrero',
-              status: 'inactive',
-              agency: 'Very Good Aliens',
-              image:
-                  'https://media-exp1.licdn.com/dms/image/C4D03AQHVNIVOMkwQaA/profile-displayphoto-shrink_200_200/0/1631637257882?e=1637193600&v=beta&t=jFm-Ckb0KS0Z5hJDbo3ZBSEZSYLHfllUf4N-IV2NDTc',
-              wikipedia: 'https://www.wikipedia.org/',
-              launches: ['Launch 1'],
-            ),
-          ),
-        );
-
-        await mockNetworkImages(() async {
-          await tester.pumpApp(
-            BlocProvider.value(
-              value: crewMemberDetailsCubit,
-              child: const CrewMemberDetailsView(),
-            ),
-          );
-        });
-
-        expect(find.byIcon(Icons.close), findsOneWidget);
-      });
+          expect(find.byIcon(Icons.close), findsOneWidget);
+        },
+      );
 
       testWidgets('renders agency subtitle', (tester) async {
         const agencyKey =

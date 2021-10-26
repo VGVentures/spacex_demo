@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/rocket_details/view/rocket_details_page.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 import '../../helpers/helpers.dart';
@@ -64,7 +63,7 @@ void main() {
       rocketsCubit = MockRocketsCubit();
 
       navigator = MockNavigator();
-      when(() => navigator.push(any(that: isRoute<RocketDetailsPage?>())))
+      when(() => navigator.push(any(that: isRoute<void>())))
           .thenAnswer((_) async {});
     });
 
@@ -177,8 +176,7 @@ void main() {
 
         await tester.tap(find.text(rockets.first.name));
 
-        verify(() => navigator.push(any(that: isRoute<RocketDetailsPage?>())))
-            .called(1);
+        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
       },
     );
   });

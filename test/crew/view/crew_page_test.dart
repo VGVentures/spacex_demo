@@ -35,8 +35,9 @@ void main() {
 
     setUp(() {
       crewMemberRepository = MockCrewMemberRepository();
-      when(() => crewMemberRepository.fetchAllCrewMembers())
-          .thenAnswer((_) async => crewMembers);
+      when(
+        () => crewMemberRepository.fetchAllCrewMembers(),
+      ).thenAnswer((_) async => crewMembers);
     });
 
     test(
@@ -67,7 +68,7 @@ void main() {
       crewCubit = MockCrewCubit();
       navigator = MockNavigator();
 
-      when(() => navigator.push(any(that: isRoute<CrewMemberDetailsPage?>())))
+      when(() => navigator.push(any(that: isRoute<void>())))
           .thenAnswer((_) async {});
     });
 
@@ -185,7 +186,7 @@ void main() {
         await tester.tap(find.text(crewMembers.first.name));
 
         verify(
-          () => navigator.push(any(that: isRoute<CrewMemberDetailsPage?>())),
+          () => navigator.push(any(that: isRoute<void>())),
         ).called(1);
       },
     );

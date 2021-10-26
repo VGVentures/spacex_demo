@@ -34,11 +34,7 @@ void main() {
 
   group('AppView', () {
     testWidgets('renders HomePage', (tester) async {
-      await tester.pumpApp(
-        const AppView(),
-        rocketRepository: rocketRepository,
-      );
-
+      await tester.pumpApp(const AppView(), rocketRepository: rocketRepository);
       expect(find.byType(HomePage), findsOneWidget);
     });
   });

@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 class CrewMemberDetailsPage extends StatelessWidget {
   const CrewMemberDetailsPage({Key? key}) : super(key: key);
 
-  static Route<CrewMemberDetailsPage> route({required CrewMember crewMember}) {
+  static Route<void> route({required CrewMember crewMember}) {
     return MaterialPageRoute(
       builder: (_) => BlocProvider(
         create: (_) => CrewMemberDetailsCubit(crewMember: crewMember),

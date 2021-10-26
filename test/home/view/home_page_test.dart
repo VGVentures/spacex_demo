@@ -7,15 +7,6 @@ import '../../helpers/pump_app.dart';
 void main() {
   group('HomePage', () {
     testWidgets(
-      'renders HomeView',
-      (tester) async {
-        await tester.pumpApp(const HomePage());
-        expect(find.byType(HomeView), findsOneWidget);
-      },
-    );
-  });
-  group('HomeView', () {
-    testWidgets(
       'renders HomePageContent',
       (tester) async {
         await tester.pumpApp(const HomePageContent());
