@@ -21,7 +21,7 @@ void main() {
           .thenAnswer((_) async {});
     });
 
-    testWidgets('number of SpaceXTile is correct', (tester) async {
+    testWidgets('renders correct amount of SpaceXCategoryCards', (tester) async {
       await tester.pumpApp(const HomePageContent());
       expect(find.byType(SpaceXCategoryCard), findsNWidgets(2));
     });
