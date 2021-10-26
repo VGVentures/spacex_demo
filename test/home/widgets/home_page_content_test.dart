@@ -21,10 +21,13 @@ void main() {
           .thenAnswer((_) async {});
     });
 
-    testWidgets('renders correct amount of SpaceXCategoryCards', (tester) async {
-      await tester.pumpApp(const HomePageContent());
-      expect(find.byType(SpaceXCategoryCard), findsNWidgets(2));
-    });
+    testWidgets(
+      'renders correct amount of ' 'SpaceXCategoryCards',
+      (tester) async {
+        await tester.pumpApp(const HomePageContent());
+        expect(find.byType(SpaceXCategoryCard), findsNWidgets(2));
+      },
+    );
 
     testWidgets(
       'renders a category card for rockets',
