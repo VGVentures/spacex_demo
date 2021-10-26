@@ -38,7 +38,7 @@ void main() {
     );
 
     testWidgets(
-      'there is 1 homePageContent_crew_spaceXCategoryCard',
+      'renders a category card for crews',
       (tester) async {
         await tester.pumpApp(const HomePageContent());
         expect(
