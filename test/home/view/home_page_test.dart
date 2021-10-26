@@ -9,7 +9,7 @@ void main() {
     testWidgets(
       'renders HomePageContent',
       (tester) async {
-        await tester.pumpApp(const HomePageContent());
+        await tester.pumpApp(const HomePage());
         expect(find.byType(HomePageContent), findsOneWidget);
       },
     );
