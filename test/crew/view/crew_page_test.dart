@@ -39,13 +39,12 @@ void main() {
       ).thenAnswer((_) async => crewMembers);
     });
 
-    test(
-      'has route',
-      () => expect(
+    test('has route', () {
+      expect(
         CrewPage.route(),
         isA<MaterialPageRoute<void>>(),
-      ),
-    );
+      );
+    });
 
     testWidgets('renders CrewView', (tester) async {
       await tester.pumpApp(
