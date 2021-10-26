@@ -49,8 +49,8 @@ void main() {
     );
 
     testWidgets(
-      'homePageContent_rocket_spaceXCategoryCard navigates '
-      'to RocketsPage on tap',
+      'navigates to RocketsPage '
+      'when rockets category card is tapped',
       (tester) async {
         await tester.pumpApp(const HomePageContent(), navigator: navigator);
 
