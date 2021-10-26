@@ -1,3 +1,4 @@
+import 'package:crew_member_repository/crew_member_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,11 +11,14 @@ import 'package:spacex_demo/l10n/l10n.dart';
 
 class MockRocketRepository extends Mock implements RocketRepository {}
 
+class MockCrewMemberRepository extends Mock implements CrewMemberRepository {}
+
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
-    RocketRepository? rocketRepository,
     MockNavigator? navigator,
+    RocketRepository? rocketRepository,
+    CrewMemberRepository? crewMemberRepository,
   }) {
     final innerChild = Scaffold(
       body: widget,
@@ -25,6 +29,9 @@ extension PumpApp on WidgetTester {
         providers: [
           RepositoryProvider.value(
             value: rocketRepository ?? MockRocketRepository(),
+          ),
+          RepositoryProvider.value(
+            value: crewMemberRepository ?? MockCrewMemberRepository(),
           )
         ],
         child: MaterialApp(

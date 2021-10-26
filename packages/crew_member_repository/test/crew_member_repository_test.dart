@@ -41,18 +41,20 @@ void main() {
     });
 
     group('.fetchAllCrewMembers', () {
-      test('throws CrewMembersException when api throws an exception',
-          () async {
-        when(() => spaceXApiClient.fetchAllCrewMembers())
-            .thenThrow(Exception());
+      test(
+        'throws CrewMembersException when api throws an exception',
+        () async {
+          when(() => spaceXApiClient.fetchAllCrewMembers())
+              .thenThrow(Exception());
 
-        expect(
-          () => subject.fetchAllCrewMembers(),
-          throwsA(isA<CrewMembersException>()),
-        );
+          expect(
+            () => subject.fetchAllCrewMembers(),
+            throwsA(isA<CrewMembersException>()),
+          );
 
-        verify(() => spaceXApiClient.fetchAllCrewMembers()).called(1);
-      });
+          verify(() => spaceXApiClient.fetchAllCrewMembers()).called(1);
+        },
+      );
 
       test('makes correct request', () async {
         await subject.fetchAllCrewMembers();

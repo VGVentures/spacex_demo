@@ -4,9 +4,21 @@
   "@homeAppBarTitle": {
     "description": "Text shown in the AppBar of the Home Page"
   },
-  "homeRocketFetchErrorMessage": "Something went wrong while fetching rockets. Please try again later.",
-  "@homeRocketFetchErrorMessage": {
-    "description": "Error text shown on the Home Page when an error occurred while fetching rockets."
+	"rocketSpaceXTileTitle": "Rockets",
+	"@rocketSpaceXTileTitle": {
+		"description": "Text included as title on the rockets tile on the home page"
+	},
+	"crewSpaceXTileTitle": "Crew",
+	"@crewSpaceXTileTitle": {
+		"description": "Text included as title on the crew tile on the home page"
+	},
+	"rocketsAppBarTitle": "Rockets",
+  "@rocketsAppBarTitle": {
+    "description": "Text shown in the AppBar of the Rockets Page"
+  },
+  "rocketsFetchErrorMessage": "Something went wrong while fetching rockets. Please try again later.",
+  "@rocketsFetchErrorMessage": {
+    "description": "Error text shown on the Rockets Page when an error occurred while fetching rockets."
   },
   "rocketDetailsFirstFlightSubtitle": "First launch: {date}",
   "@rocketDetailsFirstFlightSubtitle": {
@@ -17,8 +29,32 @@
       }
     }
   },
-  "rocketDetailsOpenWikipediaButtonText": "Open Wikipedia",
-  "@rocketDetailsOpenWikipediaButtonText": {
+  "openWikipediaButtonText": "Open Wikipedia",
+  "@openWikipediaButtonText": {
     "description": "Button text shown on the Rocket Details Page that opens the corresponding Wikipedia page."
+  },
+	"crewAppBarTitle": "Crew",
+  "@crewAppBarTitle": {
+    "description": "Text shown in the AppBar of the Crew Page"
+  },
+  "crewFetchErrorMessage": "Something went wrong while fetching crew members. Please try again later.",
+  "@crewFetchErrorMessage": {
+    "description": "Error text shown on the Home Page when an error occurred while fetching crew members."
+  },
+	"crewMemberDetailsAgency": "Agency",
+  "@crewMemberDetailsAgency": {
+    "description": "Prefix word placed in the 1st subtitle of the crew member details page"
+  },
+	"crewMemberDetailsParticipatedLaunches": "Has participated in",
+  "@crewMemberDetailsParticipatedLaunches": {
+    "description": "Prefix text placed in the 2nd subtitle of the crew member details page"
+  },
+	"crewMemberDetailsLaunch": "launch",
+  "@crewMemberDetailsLaunch": {
+    "description": "Singular suffix word placed in the 2nd subtitle of the crew member details page"
+  },
+	"crewMemberDetailsLaunches": "launches",
+  "@crewMemberDetailsLaunches": {
+    "description": "Plural suffix word placed in the 2nd subtitle of the crew member details page"
   }
 }

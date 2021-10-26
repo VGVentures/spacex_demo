@@ -13,12 +13,17 @@ class CrewMemberRepository {
 
   final SpaceXApiClient _spaceXApiClient;
 
-  /// Returns a list of all SpaceX crew members
+  /// Returns an list alphabetabetically sorted by name
+  /// of all SpaceX crew members
   ///
   /// Throws a [CrewMembersException] if an error occurs.
-  Future<List<CrewMember>> fetchAllCrewMembers() {
+  Future<List<CrewMember>> fetchAllCrewMembers() async {
     try {
-      return _spaceXApiClient.fetchAllCrewMembers();
+      final crewMembers = await _spaceXApiClient.fetchAllCrewMembers();
+
+      crewMembers.sort((a, b) => a.name.compareTo(b.name));
+
+      return crewMembers;
     } on Exception {
       throw CrewMembersException();
     }

@@ -6,7 +6,7 @@ homepage: https://github.com/VGVentures/spacex_demo
 publish_to: none
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.14.0-0 <3.0.0"
 
 dependencies:
   bloc: ^7.2.1
@@ -33,8 +33,10 @@ dev_dependencies:
   mocktail_image_network: ^0.1.0
   plugin_platform_interface: ^2.0.2
   url_launcher_platform_interface: ^2.0.4
-  very_good_analysis: ^2.3.0
+  very_good_analysis: ^2.4.0
 
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/images/

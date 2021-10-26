@@ -44,12 +44,8 @@ void main() {
     setUp(() {
       httpClient = MockHttpClient();
       subject = SpaceXApiClient(httpClient: httpClient);
-    });
-
-    setUpAll(() {
       rocketUri = Uri.https(SpaceXApiClient.authority, '/v4/rockets');
       crewUri = Uri.https(SpaceXApiClient.authority, '/v4/crew');
-      registerFallbackValue<Uri>(Uri());
     });
 
     test('constructor returns normally', () {
