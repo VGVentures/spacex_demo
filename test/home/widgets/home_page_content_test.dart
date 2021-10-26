@@ -65,8 +65,8 @@ void main() {
     );
 
     testWidgets(
-      'homePageContent_crew_spaceXCategoryCard navigates '
-      'to CrewPage on tap',
+      'navigates to CrewPage '
+      'when crew category card is tapped',
       (tester) async {
         await tester.pumpApp(
           const HomePageContent(),
