@@ -37,3 +37,29 @@ Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{
       'date_utc': instance.dateUtc?.toIso8601String(),
       'date_local': instance.dateLocal?.toIso8601String(),
     };
+
+Links _$LinksFromJson(Map<String, dynamic> json) {
+  return Links(
+    patch: Patch.fromJson(json['patch'] as Map<String, dynamic>),
+    webcast: json['webcast'] as String,
+    wikipedia: json['wikipedia'] as String,
+  );
+}
+
+Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
+      'patch': instance.patch,
+      'webcast': instance.webcast,
+      'wikipedia': instance.wikipedia,
+    };
+
+Patch _$PatchFromJson(Map<String, dynamic> json) {
+  return Patch(
+    small: json['small'] as String,
+    large: json['large'] as String?,
+  );
+}
+
+Map<String, dynamic> _$PatchToJson(Patch instance) => <String, dynamic>{
+      'small': instance.small,
+      'large': instance.large,
+    };

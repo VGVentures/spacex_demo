@@ -78,3 +78,72 @@ class Launch extends Equatable {
   @override
   String toString() => 'Latest Launch($id, $name)';
 }
+
+/// {@template links}
+/// A model that represents available links to images, videos and articles.
+/// {@endtemplate}
+@JsonSerializable(
+  fieldRename: FieldRename.snake,
+)
+class Links extends Equatable {
+  /// {@macro length}
+  const Links({
+    required this.patch,
+    required this.webcast,
+    required this.wikipedia,
+  });
+
+  /// The Patch for the launch mission
+  final Patch patch;
+
+  /// The launch video link
+  final String webcast;
+
+  /// The latest launch information on wikipedia
+  final String wikipedia;
+
+  @override
+  List<Object> get props => [patch, webcast, wikipedia];
+
+  /// Converts a JSON [Map] into a [Links] instance.
+  static Links fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
+
+  /// Converts this [Links] instance into a JSON [Map].
+  Map<String, dynamic> toJson() => _$LinksToJson(this);
+
+  @override
+  String toString() =>
+      'Links(Patch($patch), Webcast: $webcast, Wikipedia: $wikipedia)';
+}
+
+/// {@template Patch}
+/// A model that represents small and large images of the mission patch.
+/// {@endtemplate}
+@JsonSerializable(
+  fieldRename: FieldRename.snake,
+)
+class Patch extends Equatable {
+  /// {@macro patch}
+  const Patch({
+    required this.small,
+    this.large,
+  });
+
+  /// A small patch image link
+  final String small;
+
+  /// A large patch image link
+  final String? large;
+
+  @override
+  List<Object?> get props => [small, large];
+
+  /// Converts a JSON [Map] into a [Patch] instance.
+  static Patch fromJson(Map<String, dynamic> json) => _$PatchFromJson(json);
+
+  /// Converts this [Patch] instance into a JSON [Map].
+  Map<String, dynamic> toJson() => _$PatchToJson(this);
+
+  @override
+  String toString() => 'Patch(Small: $small , Large: $large)';
+}
