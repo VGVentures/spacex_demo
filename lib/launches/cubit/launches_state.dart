@@ -1,6 +1,16 @@
 part of 'launches_cubit.dart';
 
-@immutable
-abstract class LaunchesState {}
+enum LaunchesStatus { initial, loading, success, failure }
 
-class LaunchesInitial extends LaunchesState {}
+class LaunchesState extends Equatable {
+  const LaunchesState({
+    this.status = LaunchesStatus.initial,
+    this.latestLaunch,
+  });
+
+  final LaunchesStatus status;
+  final Launch? latestLaunch;
+
+  @override
+  List<Object?> get props => [status, latestLaunch];
+}
