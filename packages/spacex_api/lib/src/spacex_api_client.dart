@@ -74,6 +74,20 @@ class SpaceXApiClient {
     }
   }
 
+  /// Fetch latest launch.
+  ///
+  /// REST call: `GET /launches/latest`
+  Future<dynamic> fetchLatestLaunch() async {
+    final uri = Uri.https(authority, '/v4/launches/latest/');
+    final dynamic responseBody = await _getOne(uri);
+
+    try {
+      return responseBody;
+    } catch (_) {
+      throw JsonDeserializationException();
+    }
+  }
+
   Future<List<dynamic>> _get(Uri uri) async {
     http.Response response;
 
@@ -89,6 +103,26 @@ class SpaceXApiClient {
 
     try {
       return json.decode(response.body) as List;
+    } catch (_) {
+      throw JsonDecodeException();
+    }
+  }
+
+  Future<dynamic> _getOne(Uri uri) async {
+    http.Response response;
+
+    try {
+      response = await _httpClient.get(uri);
+    } catch (_) {
+      throw HttpException();
+    }
+
+    if (response.statusCode != 200) {
+      throw HttpRequestFailure(response.statusCode);
+    }
+
+    try {
+      return json.decode(response.body);
     } catch (_) {
       throw JsonDecodeException();
     }
