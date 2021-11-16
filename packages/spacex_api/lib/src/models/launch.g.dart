@@ -10,14 +10,12 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) {
   return Launch(
     id: json['id'] as String,
     name: json['name'] as String,
-    details: json['details'] as String,
-    crew: (json['crew'] as List<dynamic>)
-        .map((e) => CrewMember.fromJson(e as Map<String, dynamic>))
+    details: json['details'] as String?,
+    crew: (json['crew'] as List<dynamic>?)
+        ?.map((e) => CrewMember.fromJson(e as Map<String, dynamic>))
         .toList(),
     flightNumber: json['flight_number'] as int?,
-    rocket: json['rocket'] == null
-        ? null
-        : Rocket.fromJson(json['rocket'] as Map<String, dynamic>),
+    rocket: json['rocket'] as String?,
     success: json['success'] as bool?,
     dateUtc: json['date_utc'] == null
         ? null

@@ -77,12 +77,12 @@ class SpaceXApiClient {
   /// Fetch latest launch.
   ///
   /// REST call: `GET /launches/latest`
-  Future<dynamic> fetchLatestLaunch() async {
+  Future<Launch> fetchLatestLaunch() async {
     final uri = Uri.https(authority, '/v4/launches/latest/');
     final dynamic responseBody = await _getOne(uri);
 
     try {
-      return responseBody;
+      return Launch.fromJson(responseBody as Map<String, dynamic>);
     } catch (_) {
       throw JsonDeserializationException();
     }

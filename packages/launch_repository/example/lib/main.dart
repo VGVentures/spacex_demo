@@ -6,7 +6,7 @@ Future<void> main() async {
   final launchRepository = LaunchRepository();
 
   try {
-    final dynamic latestLaunch = await launchRepository.fetchLatestLaunch();
+    final latestLaunch = await launchRepository.fetchLatestLaunch();
     print(latestLaunch);
   } on Exception catch (e) {
     print(e);

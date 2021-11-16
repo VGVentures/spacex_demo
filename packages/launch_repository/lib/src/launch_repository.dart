@@ -16,7 +16,7 @@ class LaunchRepository {
   ///Returns the latest launch
   ///
   ///Throws a [LaunchException] if an error occurs.
-  Future<dynamic> fetchLatestLaunch() {
+  Future<Launch> fetchLatestLaunch() {
     try {
       return _spaceXApiClient.fetchLatestLaunch();
     } on Exception {

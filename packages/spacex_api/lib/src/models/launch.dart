@@ -13,8 +13,8 @@ class Launch extends Equatable {
   const Launch({
     required this.id,
     required this.name,
-    required this.details,
-    required this.crew,
+    this.details,
+    this.crew,
     this.flightNumber,
     this.rocket,
     this.success,
@@ -22,33 +22,35 @@ class Launch extends Equatable {
     this.dateLocal,
   });
 
-  ///The ID of the launch.
+  /// The ID of the launch.
   final String id;
 
-  ///The name of the launch.
+  /// The name of the launch.
   final String name;
 
-  ///The details of the launch.
-  final String details;
+  /// The details of the launch.
+  ///
+  /// May be null
+  final String? details;
 
   /// A List of crew members
   ///
   /// May be empty.
-  final List<CrewMember> crew;
+  final List<CrewMember>? crew;
 
   /// The flightNumber of the launch
   final int? flightNumber;
 
-  ///The name of the rocket
-  final Rocket? rocket;
+  /// The ID of the rocket
+  final String? rocket;
 
-  ///If launch succeeded
+  /// If launch succeeded
   final bool? success;
 
-  ///The launch date in UTC
+  /// The launch date in UTC
   final DateTime? dateUtc;
 
-  ///The launch date
+  /// The launch date
   final DateTime? dateLocal;
 
   @override
@@ -74,5 +76,5 @@ class Launch extends Equatable {
   bool get stringify => true;
 
   @override
-  String toString() => 'Launch($id, $name)';
+  String toString() => 'Latest Launch($id, $name)';
 }
