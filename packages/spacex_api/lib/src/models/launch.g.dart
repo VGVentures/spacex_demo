@@ -10,6 +10,7 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) {
   return Launch(
     id: json['id'] as String,
     name: json['name'] as String,
+    links: Links.fromJson(json['links'] as Map<String, dynamic>),
     details: json['details'] as String?,
     crew: (json['crew'] as List<dynamic>?)
         ?.map((e) => CrewMember.fromJson(e as Map<String, dynamic>))
@@ -36,6 +37,7 @@ Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{
       'success': instance.success,
       'date_utc': instance.dateUtc?.toIso8601String(),
       'date_local': instance.dateLocal?.toIso8601String(),
+      'links': instance.links,
     };
 
 Links _$LinksFromJson(Map<String, dynamic> json) {

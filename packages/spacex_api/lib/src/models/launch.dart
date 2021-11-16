@@ -13,6 +13,7 @@ class Launch extends Equatable {
   const Launch({
     required this.id,
     required this.name,
+    required this.links,
     this.details,
     this.crew,
     this.flightNumber,
@@ -52,6 +53,9 @@ class Launch extends Equatable {
 
   /// The launch date
   final DateTime? dateLocal;
+
+  /// Available source links
+  final Links links;
 
   @override
   List<Object?> get props => [
