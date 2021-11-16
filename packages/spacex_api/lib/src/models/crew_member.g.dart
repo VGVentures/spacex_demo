@@ -14,9 +14,8 @@ CrewMember _$CrewMemberFromJson(Map<String, dynamic> json) {
     agency: json['agency'] as String,
     image: json['image'] as String,
     wikipedia: json['wikipedia'] as String,
-    launches: (json['launches'] as List<dynamic>)
-        .map((dynamic e) => e as String)
-        .toList(),
+    launches:
+        (json['launches'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 

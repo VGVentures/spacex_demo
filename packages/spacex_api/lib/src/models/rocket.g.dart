@@ -15,7 +15,7 @@ Rocket _$RocketFromJson(Map<String, dynamic> json) {
     diameter: Length.fromJson(json['diameter'] as Map<String, dynamic>),
     mass: Mass.fromJson(json['mass'] as Map<String, dynamic>),
     flickrImages: (json['flickr_images'] as List<dynamic>)
-        .map((dynamic e) => e as String)
+        .map((e) => e as String)
         .toList(),
     active: json['active'] as bool?,
     stages: json['stages'] as int?,
