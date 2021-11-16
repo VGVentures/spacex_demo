@@ -16,6 +16,10 @@
   "@latestLaunchSpaceXTileTitle": {
     "description": "Text included as title on the latest launch tile on the home page"
   },
+  "latestLaunchAppBarTitle": "Latest Launch",
+  "@latestLaunchAppBarTitle": {
+    "description": "Text shown in the AppBar of the latest Launch Page"
+  },
   "rocketsAppBarTitle": "Rockets",
   "@rocketsAppBarTitle": {
     "description": "Text shown in the AppBar of the Rockets Page"
@@ -32,6 +36,19 @@
         "example": "31-12-2021"
       }
     }
+  },
+  "latestLaunchSubtitle": "Launched: {date}",
+  "@latestLaunchSubtitle": {
+    "description": "Subtitle text shown on the Launches Page that indicates the latest launch.",
+    "placeholders": {
+      "date": {
+        "example": "31-12-2021"
+      }
+    }
+  },
+  "openWebcastButtonText": "Open Webcast",
+  "@openWebcastButtonText": {
+    "description": "Button text shown on the Rocket Details Page that opens the corresponding Webcast page."
   },
   "openWikipediaButtonText": "Open Wikipedia",
   "@openWikipediaButtonText": {
