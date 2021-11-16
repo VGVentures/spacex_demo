@@ -15,7 +15,7 @@ class Launch extends Equatable {
     required this.name,
     required this.details,
     required this.crew,
-    required this.flightNumber,
+    this.flightNumber,
     this.rocket,
     this.success,
     this.dateUtc,
@@ -36,6 +36,7 @@ class Launch extends Equatable {
   /// May be empty.
   final List<CrewMember> crew;
 
+  /// The flightNumber of the launch
   final int? flightNumber;
 
   ///The name of the rocket
