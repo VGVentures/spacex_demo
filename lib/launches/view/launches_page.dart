@@ -134,10 +134,8 @@ class _LatestLaunch extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Positioned(
-                left: 16,
-                bottom: 16,
-                right: 16,
+              Container(
+                alignment: Alignment.bottomCenter,
                 child: SizedBox(
                   height: 64,
                   child: ElevatedButton(
@@ -155,10 +153,8 @@ class _LatestLaunch extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 16,
-                bottom: 16,
-                right: 16,
+              Container(
+                alignment: Alignment.bottomCenter,
                 child: SizedBox(
                   height: 64,
                   child: ElevatedButton(
