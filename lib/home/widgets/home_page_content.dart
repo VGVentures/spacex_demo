@@ -24,7 +24,8 @@ class HomePageContent extends StatelessWidget {
               ),
               child: SpaceXCategoryCard(
                 key: const Key(
-                    'homePageContent_latestLaunch_spaceXCategoryCard'),
+                  'homePageContent_latestLaunch_spaceXCategoryCard',
+                ),
                 onTap: () => Navigator.of(context).push(LaunchesPage.route()),
                 title: Text(l10n.latestLaunchSpaceXTileTitle),
                 imageUrl: 'assets/images/img_spacex_launch.jpeg',
