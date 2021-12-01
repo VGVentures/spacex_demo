@@ -79,10 +79,10 @@ class SpaceXApiClient {
   /// REST call: `GET /launches/latest`
   Future<Launch> fetchLatestLaunch() async {
     final uri = Uri.https(authority, '/v4/launches/latest/');
-    final dynamic responseBody = await _getOne(uri);
+    final responseBody = await _getOne(uri);
 
     try {
-      return Launch.fromJson(responseBody as Map<String, dynamic>);
+      return Launch.fromJson(responseBody);
     } catch (_) {
       throw JsonDeserializationException();
     }
@@ -108,7 +108,7 @@ class SpaceXApiClient {
     }
   }
 
-  Future<dynamic> _getOne(Uri uri) async {
+  Future<Map<String, dynamic>> _getOne(Uri uri) async {
     http.Response response;
 
     try {
@@ -122,7 +122,7 @@ class SpaceXApiClient {
     }
 
     try {
-      return json.decode(response.body);
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (_) {
       throw JsonDecodeException();
     }

@@ -38,14 +38,14 @@ class LaunchesView extends StatelessWidget {
         title: Text(l10n.latestLaunchAppBarTitle),
       ),
       body: const Center(
-        child: _Content(),
+        child: _LaunchesContent(),
       ),
     );
   }
 }
 
-class _Content extends StatelessWidget {
-  const _Content({Key? key}) : super(key: key);
+class _LaunchesContent extends StatelessWidget {
+  const _LaunchesContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,6 @@ class _LatestLaunch extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Column(
         children: [
-          //Latest Launch Row, following widget could be a list of launches
           ListTile(
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,13 +103,11 @@ class _LatestLaunch extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          // const Text('Name: '),
                           Text(latestLaunch.name),
                         ],
                       ),
                       Row(
                         children: [
-                          // const Text('Flight Number:'),
                           Text('${latestLaunch.flightNumber}'),
                         ],
                       ),

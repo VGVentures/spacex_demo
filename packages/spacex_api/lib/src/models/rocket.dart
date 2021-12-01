@@ -6,9 +6,7 @@ part 'rocket.g.dart';
 /// {@template rocket}
 /// A model containing data about a SpaceX rocket.
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class Rocket extends Equatable {
   /// {@macro rocket}
   const Rocket({

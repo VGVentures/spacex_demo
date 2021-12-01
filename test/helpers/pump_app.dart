@@ -10,11 +10,11 @@ import 'package:mocktail/mocktail.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
 
-import '../launches/cubit/launches_cubit_test.dart';
-
 class MockRocketRepository extends Mock implements RocketRepository {}
 
 class MockCrewMemberRepository extends Mock implements CrewMemberRepository {}
+
+class MockLaunchRepository extends Mock implements LaunchRepository {}
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(

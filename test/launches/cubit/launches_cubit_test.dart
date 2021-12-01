@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:launch_repository/launch_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/launches/cubit/launches_cubit.dart';
+import 'package:spacex_demo/launches/launches.dart';
 
 class MockLaunchRepository extends Mock implements LaunchRepository {}
 
@@ -56,10 +56,10 @@ void main() {
 
     blocTest<LaunchesCubit, LaunchesState>(
       'emits failure state when repository throws exception',
-      build: () {
+      setUp: () {
         when(() => launchRepository.fetchLatestLaunch()).thenThrow(Exception());
-        return LaunchesCubit(launchRepository: launchRepository);
       },
+      build: () => LaunchesCubit(launchRepository: launchRepository),
       act: (cubit) => cubit.fetchLatestLaunch(),
       expect: () => [
         const LaunchesState(status: LaunchesStatus.loading),

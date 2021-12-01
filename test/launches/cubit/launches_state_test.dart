@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:spacex_api/spacex_api.dart';
-import 'package:spacex_demo/launches/cubit/launches_cubit.dart';
+import 'package:spacex_demo/launches/launches.dart';
 
 void main() {
   group('CrewState', () {

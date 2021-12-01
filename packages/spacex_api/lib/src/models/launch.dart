@@ -7,7 +7,7 @@ part 'launch.g.dart';
 /// {@template launch}
 /// A model containing data about a launch
 /// {@endtemplate}
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Launch extends Equatable {
   /// {@macro launch}
   const Launch({
@@ -75,9 +75,6 @@ class Launch extends Equatable {
 
   /// Converts this [Launch] instance into a JSON [Map]
   Map<String, dynamic> toJson() => _$LaunchToJson(this);
-
-  @override
-  bool get stringify => true;
 
   @override
   String toString() => 'Latest Launch($id, $name)';
