@@ -173,7 +173,7 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [event_link]: https://dsc.community.dev/events/details/developer-student-clubs-polytechnic-university-of-milan-presents-flutter-very-good-app/
 [dsc_link]: https://dsc.community.dev/polytechnic-university-of-milan/
 [slides_link]: slides/recipe_for_a_very_good_app.pdf
-[logo_black]: https://raw.githubusercontent.com/VeryGoodOpenSource/very_good_cli/main/assets/images/vgv_logo_black.png#gh-light-mode-only
-[logo_white]: https://raw.githubusercontent.com/VeryGoodOpenSource/very_good_cli/main/assets/images/vgv_logo_white.png#gh-dark-mode-only
-[very_good_ventures_link_dark]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=CLI#gh-dark-mode-only
-[very_good_ventures_link_light]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=CLI#gh-light-mode-only
+[logo_black]: https://raw.githubusercontent.com/VGVentures/spacex_demo/main/assets/images/vgv_logo_black.png#gh-light-mode-only
+[logo_white]: https://raw.githubusercontent.com/VGVentures/spacex_demo/main/assets/images/vgv_logo_white.png#gh-dark-mode-only
+[very_good_ventures_link_dark]: https://verygood.ventures/#gh-dark-mode-only
+[very_good_ventures_link_light]: https://verygood.ventures/#gh-light-mode-only
