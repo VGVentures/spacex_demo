@@ -24,7 +24,7 @@ void main() {
       'renders correct amount of ' 'SpaceXCategoryCards',
       (tester) async {
         await tester.pumpApp(const HomePageContent());
-        expect(find.byType(SpaceXCategoryCard), findsNWidgets(2));
+        expect(find.byType(SpaceXCategoryCard), findsNWidgets(3));
       },
     );
 

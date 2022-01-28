@@ -70,7 +70,7 @@ class _LaunchesContent extends StatelessWidget {
         );
       case LaunchesStatus.success:
         return _LatestLaunch(
-          key: const Key('launchesView_success_rocketList'),
+          key: const Key('launchesView_success_latestLaunch'),
           latestLaunch: state.latestLaunch!,
         );
     }
