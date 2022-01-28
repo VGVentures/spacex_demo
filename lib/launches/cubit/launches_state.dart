@@ -11,6 +11,16 @@ class LaunchesState extends Equatable {
   final LaunchesStatus status;
   final Launch? latestLaunch;
 
+  LaunchesState copyWith({
+    LaunchesStatus? status,
+    Launch? latestLaunch,
+  }) {
+    return LaunchesState(
+      status: status ?? this.status,
+      latestLaunch: latestLaunch ?? this.latestLaunch,
+    );
+  }
+
   @override
   List<Object?> get props => [status, latestLaunch];
 }

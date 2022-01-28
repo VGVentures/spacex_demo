@@ -15,25 +15,23 @@ class LaunchesCubit extends Cubit<LaunchesState> {
 
   Future<void> fetchLatestLaunch() async {
     emit(
-      LaunchesState(
+      state.copyWith(
         status: LaunchesStatus.loading,
-        latestLaunch: state.latestLaunch,
       ),
     );
 
     try {
       final latestLaunch = await _launchRepository.fetchLatestLaunch();
       emit(
-        LaunchesState(
+        state.copyWith(
           status: LaunchesStatus.success,
           latestLaunch: latestLaunch,
         ),
       );
     } on Exception {
       emit(
-        LaunchesState(
+        state.copyWith(
           status: LaunchesStatus.failure,
-          latestLaunch: state.latestLaunch,
         ),
       );
     }

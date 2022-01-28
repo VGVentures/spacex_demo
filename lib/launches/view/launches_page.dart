@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:launch_repository/launch_repository.dart';
+import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
 import 'package:spacex_demo/launches/cubit/launches_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,9 +51,9 @@ class _LaunchesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final status = context.select((LaunchesCubit cubit) => cubit.state.status);
+    final state = context.select((LaunchesCubit cubit) => cubit.state);
 
-    switch (status) {
+    switch (state.status) {
       case LaunchesStatus.initial:
         return const SizedBox(
           key: Key('launchesView_initial_sizedBox'),
@@ -68,24 +69,24 @@ class _LaunchesContent extends StatelessWidget {
           child: Text(l10n.rocketsFetchErrorMessage),
         );
       case LaunchesStatus.success:
-        return const _LatestLaunch(
-          key: Key('launchesView_success_rocketList'),
+        return _LatestLaunch(
+          key: const Key('launchesView_success_rocketList'),
+          latestLaunch: state.latestLaunch!,
         );
     }
   }
 }
 
 class _LatestLaunch extends StatelessWidget {
-  const _LatestLaunch({Key? key}) : super(key: key);
+  const _LatestLaunch({Key? key, required this.latestLaunch}) : super(key: key);
+
+  final Launch latestLaunch;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final latestLaunch =
-        context.select((LaunchesCubit cubit) => cubit.state.latestLaunch!);
-
-    return Container(
+    return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Column(
         children: [
@@ -101,16 +102,8 @@ class _LatestLaunch extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          Text(latestLaunch.name),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text('${latestLaunch.flightNumber}'),
-                        ],
-                      ),
+                      Text(latestLaunch.name),
+                      Text('${latestLaunch.flightNumber}'),
                     ],
                   ),
                 )
@@ -150,7 +143,7 @@ class _LatestLaunch extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
                   height: 64,
