@@ -3,7 +3,7 @@ import 'package:spacex_api/spacex_api.dart';
 ///Thrown when an error occurs while looking up for launches
 class LaunchException implements Exception {}
 
-/// {@template launches_repository}
+/// {@template launch_repository}
 /// A Dart package to manage the launches
 /// {@endtemplate}
 class LaunchRepository {
@@ -13,9 +13,9 @@ class LaunchRepository {
 
   final SpaceXApiClient _spaceXApiClient;
 
-  ///Returns the latest launch
+  /// Returns the latest launch.
   ///
-  ///Throws a [LaunchException] if an error occurs.
+  /// Throws a [LaunchException] if an error occurs.
   Future<Launch> fetchLatestLaunch() {
     try {
       return _spaceXApiClient.fetchLatestLaunch();

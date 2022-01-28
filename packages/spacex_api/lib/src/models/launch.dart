@@ -5,7 +5,7 @@ import 'package:spacex_api/spacex_api.dart';
 part 'launch.g.dart';
 
 /// {@template launch}
-/// A model containing data about a launch
+/// A model containing data about a scheduled SpaceX rocket launch.
 /// {@endtemplate}
 @JsonSerializable()
 class Launch extends Equatable {
@@ -34,9 +34,9 @@ class Launch extends Equatable {
   /// May be null
   final String? details;
 
-  /// A List of crew members
+  /// A list of crew members involved in the launch.
   ///
-  /// May be empty.
+  /// May be `null` or empty.
   final List<CrewMember>? crew;
 
   /// The flightNumber of the launch
@@ -85,7 +85,7 @@ class Launch extends Equatable {
 /// {@endtemplate}
 @JsonSerializable()
 class Links extends Equatable {
-  /// {@macro length}
+  /// {@macro links}
   const Links({
     required this.patch,
     required this.webcast,
@@ -115,7 +115,7 @@ class Links extends Equatable {
       'Links(Patch($patch), Webcast: $webcast, Wikipedia: $wikipedia)';
 }
 
-/// {@template Patch}
+/// {@template patch}
 /// A model that represents small and large images of the mission patch.
 /// {@endtemplate}
 @JsonSerializable()
