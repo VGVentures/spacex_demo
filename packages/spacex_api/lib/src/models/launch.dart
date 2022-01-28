@@ -83,9 +83,7 @@ class Launch extends Equatable {
 /// {@template links}
 /// A model that represents available links to images, videos and articles.
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class Links extends Equatable {
   /// {@macro length}
   const Links({
@@ -120,9 +118,7 @@ class Links extends Equatable {
 /// {@template Patch}
 /// A model that represents small and large images of the mission patch.
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class Patch extends Equatable {
   /// {@macro patch}
   const Patch({

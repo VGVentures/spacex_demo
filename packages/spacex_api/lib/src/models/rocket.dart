@@ -113,9 +113,7 @@ class Rocket extends Equatable {
 /// {@template length}
 /// A model that represents a certain length in both meters and feet.
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class Length extends Equatable {
   /// {@macro length}
   const Length({
@@ -145,9 +143,7 @@ class Length extends Equatable {
 /// {@template mass}
 /// A model that represents a certain length in both meters and feet.
 /// {@endtemplate}
-@JsonSerializable(
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class Mass extends Equatable {
   /// {@macro mass}
   const Mass({
