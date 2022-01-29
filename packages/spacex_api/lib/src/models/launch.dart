@@ -111,8 +111,7 @@ class Links extends Equatable {
   Map<String, dynamic> toJson() => _$LinksToJson(this);
 
   @override
-  String toString() =>
-      'Links(Patch($patch), Webcast: $webcast, Wikipedia: $wikipedia)';
+  String toString() => 'Links(Webcast: $webcast, Wikipedia: $wikipedia)';
 }
 
 /// {@template patch}
@@ -142,5 +141,5 @@ class Patch extends Equatable {
   Map<String, dynamic> toJson() => _$PatchToJson(this);
 
   @override
-  String toString() => 'Patch(Small: $small , Large: $large)';
+  String toString() => 'Patch(Small: $small)';
 }

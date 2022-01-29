@@ -3,7 +3,7 @@ import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/crew_member_details/cubit/crew_member_details_cubit.dart';
 
 void main() {
-  group('CrewMemberDewtailsState', () {
+  group('CrewMemberDetailsState', () {
     const crewMember = CrewMember(
       id: '0',
       name: 'Alejandro Ferrero',

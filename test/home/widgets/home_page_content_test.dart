@@ -84,5 +84,24 @@ void main() {
         verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
       },
     );
+
+    testWidgets(
+      'navigates to LaunchesPage '
+      'when launch category card is tapped',
+      (tester) async {
+        await tester.pumpApp(
+          const HomePageContent(),
+          navigator: navigator,
+        );
+
+        await tester.tap(
+          find.byKey(
+            const Key('homePageContent_latestLaunch_spaceXCategoryCard'),
+          ),
+        );
+
+        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+      },
+    );
   });
 }

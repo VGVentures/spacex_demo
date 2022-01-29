@@ -122,6 +122,7 @@ class _LatestLaunch extends StatelessWidget {
             height: 35,
           ),
           Row(
+            key: const Key('launchesPage_link_buttons'),
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
