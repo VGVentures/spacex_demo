@@ -16,13 +16,13 @@ class Rocket extends Equatable {
     required this.height,
     required this.diameter,
     required this.mass,
+    required this.firstFlight,
     this.flickrImages = const [],
     this.active,
     this.stages,
     this.boosters,
     this.costPerLaunch,
     this.successRatePct,
-    this.firstFlight,
     this.country,
     this.company,
     this.wikipedia,
@@ -46,6 +46,9 @@ class Rocket extends Equatable {
   /// The mass of the rocket.
   final Mass mass;
 
+  /// The date this rocket was first launched.
+  final DateTime? firstFlight;
+
   /// A collection of images if this rocket hosted on https://flickr.com
   ///
   /// May be empty.
@@ -67,9 +70,6 @@ class Rocket extends Equatable {
   ///
   /// This value must be in between `0` and `100`.
   final int? successRatePct;
-
-  /// The date this rocket was first launched.
-  final DateTime? firstFlight;
 
   /// The country in which this rocket was built.
   final String? country;

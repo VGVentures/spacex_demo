@@ -4,26 +4,48 @@ import 'package:test/test.dart';
 
 void main() {
   group('Launch', () {
+    final date = DateTime.now();
+    final crewMembers = List.generate(
+      3,
+      (i) => CrewMember(
+        id: '$i',
+        name: 'Alejandro Ferrero',
+        status: 'active',
+        agency: 'Very Good Aliens',
+        image:
+            'https://media-exp1.licdn.com/dms/image/C4D03AQHVNIVOMkwQaA/profile-displayphoto-shrink_200_200/0/1631637257882?e=1637193600&v=beta&t=jFm-Ckb0KS0Z5hJDbo3ZBSEZSYLHfllUf4N-IV2NDTc',
+        wikipedia: 'https://www.wikipedia.org/',
+        launches: ['Launch $i'],
+      ),
+    );
+    final launch = Launch(
+        id: '1',
+        name: 'Starlink Mission 1337',
+        dateLocal: date,
+        dateUtc: date,
+        crew: crewMembers,
+        links: Links(
+            patch: Patch(
+                small: 'https://avatars.githubusercontent.com/u/2918581?v=4'),
+            webcast: 'https://www.youtube.com',
+            wikipedia: 'https://www.wikipedia.org/'));
+
     test('supports value comparison', () {
       expect(
-          Launch(
-              id: '1',
-              name: 'Starlink Mission 1337',
-              links: Links(
-                  patch: Patch(
-                      small:
-                          'https://avatars.githubusercontent.com/u/2918581?v=4'),
-                  webcast: 'https://www.youtube.com',
-                  wikipedia: 'https://www.wikipedia.org/')),
-          Launch(
-              id: '1',
-              name: 'Starlink Mission 1337',
-              links: Links(
-                  patch: Patch(
-                      small:
-                          ' https://avatars.githubusercontent.com/u/2918581?v=4'),
-                  webcast: 'https://www.youtube.com',
-                  wikipedia: 'https://www.wikipedia.org/')));
+        launch,
+        Launch(
+            id: '1',
+            name: 'Starlink Mission 1337',
+            crew: crewMembers,
+            dateLocal: date,
+            dateUtc: date,
+            links: Links(
+                patch: Patch(
+                    small:
+                        'https://avatars.githubusercontent.com/u/2918581?v=4'),
+                webcast: 'https://www.youtube.com',
+                wikipedia: 'https://www.wikipedia.org/')),
+      );
     });
 
     test('has concise toString', () {
@@ -31,6 +53,8 @@ void main() {
           Launch(
                   id: '1',
                   name: 'Starlink Mission 1337',
+                  dateLocal: date,
+                  dateUtc: date,
                   links: Links(
                       patch: Patch(
                           small:
@@ -46,6 +70,8 @@ void main() {
           Launch(
                   id: '1',
                   name: 'Starlink Mission 1337',
+                  dateLocal: date,
+                  dateUtc: date,
                   links: Links(
                       patch: Patch(
                           small:

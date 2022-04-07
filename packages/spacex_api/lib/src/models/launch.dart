@@ -15,12 +15,12 @@ class Launch extends Equatable {
     required this.name,
     required this.links,
     this.details,
-    this.crew,
+    this.crew = const [],
     this.flightNumber,
     this.rocket,
     this.success,
-    this.dateUtc,
-    this.dateLocal,
+    required this.dateUtc,
+    required this.dateLocal,
   });
 
   /// The ID of the launch.
@@ -67,7 +67,8 @@ class Launch extends Equatable {
         rocket,
         success,
         dateUtc,
-        dateLocal
+        dateLocal,
+        links
       ];
 
   /// Converts a JSON [Map] into a [Launch] instance
@@ -88,21 +89,21 @@ class Links extends Equatable {
   /// {@macro links}
   const Links({
     required this.patch,
-    required this.webcast,
-    required this.wikipedia,
+    this.webcast,
+    this.wikipedia,
   });
 
   /// The Patch for the launch mission
   final Patch patch;
 
   /// The launch video link
-  final String webcast;
+  final String? webcast;
 
   /// The latest launch information on wikipedia
-  final String wikipedia;
+  final String? wikipedia;
 
   @override
-  List<Object> get props => [patch, webcast, wikipedia];
+  List<Object?> get props => [patch, webcast, wikipedia];
 
   /// Converts a JSON [Map] into a [Links] instance.
   static Links fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
@@ -121,12 +122,12 @@ class Links extends Equatable {
 class Patch extends Equatable {
   /// {@macro patch}
   const Patch({
-    required this.small,
+    this.small,
     this.large,
   });
 
   /// A small patch image link
-  final String small;
+  final String? small;
 
   /// A large patch image link
   final String? large;

@@ -14,10 +14,14 @@ void main() {
       navigator = MockNavigator();
 
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
 
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
     });
 
     testWidgets(

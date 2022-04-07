@@ -24,6 +24,7 @@ void main() {
       height: const Length(meters: 1, feet: 1),
       diameter: const Length(meters: 1, feet: 1),
       mass: const Mass(kg: 1, lb: 1),
+      firstFlight: DateTime.now(),
     ),
   );
 
@@ -64,7 +65,9 @@ void main() {
 
       navigator = MockNavigator();
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
     });
 
     setUpAll(() {

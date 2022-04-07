@@ -43,8 +43,8 @@ Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{
 Links _$LinksFromJson(Map<String, dynamic> json) {
   return Links(
     patch: Patch.fromJson(json['patch'] as Map<String, dynamic>),
-    webcast: json['webcast'] as String,
-    wikipedia: json['wikipedia'] as String,
+    webcast: json['webcast'] as String?,
+    wikipedia: json['wikipedia'] as String?,
   );
 }
 
@@ -56,7 +56,7 @@ Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
 
 Patch _$PatchFromJson(Map<String, dynamic> json) {
   return Patch(
-    small: json['small'] as String,
+    small: json['small'] as String?,
     large: json['large'] as String?,
   );
 }

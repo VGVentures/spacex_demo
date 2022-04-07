@@ -95,7 +95,10 @@ class _LatestLaunch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(latestLaunch.links.patch.small),
+                  backgroundImage: NetworkImage(
+                    latestLaunch.links.patch.small ??
+                        'assets/images/img_spacex_launch.jpeg',
+                  ),
                   radius: 50,
                 ),
                 Expanded(
@@ -136,7 +139,7 @@ class _LatestLaunch extends StatelessWidget {
                     onPressed: () async {
                       final url = latestLaunch.links.webcast;
 
-                      if (await canLaunch(url)) {
+                      if (await canLaunch(url!)) {
                         await launch(url);
                       }
                     },
@@ -155,7 +158,7 @@ class _LatestLaunch extends StatelessWidget {
                     onPressed: () async {
                       final url = latestLaunch.links.wikipedia;
 
-                      if (await canLaunch(url)) {
+                      if (await canLaunch(url!)) {
                         await launch(url);
                       }
                     },

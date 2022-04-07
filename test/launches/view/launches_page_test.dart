@@ -27,10 +27,13 @@ void main() {
   late UrlLauncherPlatform urlLauncherPlatform;
 
   const status = LaunchesStatus.success;
+  final date = DateTime.now();
 
   final latestLaunch = Launch(
     id: '0',
     name: 'mock-launch-name',
+    dateLocal: date,
+    dateUtc: date,
     links: const Links(
       patch: Patch(
         small: 'https://avatars.githubusercontent.com/u/2918581?v=4',
@@ -108,7 +111,9 @@ void main() {
       navigator = MockNavigator();
 
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
     });
 
     setUpAll(() {
@@ -202,88 +207,102 @@ void main() {
       },
     );
 
-    // group('open link buttons', () {
-    //   const key = Key('launchesPage_link_buttons');
-    //   const webcastKey = Key('launchesPage_openWebcast_elevatedButton');
-    //   const wikipediaKey = Key('launchesPage_openWikipedia_elevatedButton');
+    group('open link buttons', () {
+      const key = Key('launchesPage_link_buttons');
+      const webcastKey = Key('launchesPage_openWebcast_elevatedButton');
+      const wikipediaKey = Key('launchesPage_openWikipedia_elevatedButton');
 
-    //   testWidgets(
-    //     'is rendered',
-    //     (tester) async {
-    //       await mockNetworkImages(() async {
-    //         await tester.pumpApp(
-    //           BlocProvider.value(
-    //             value: launchesCubit,
-    //             child: const LaunchesView(),
-    //           ),
-    //         );
-    //       });
+      testWidgets(
+        'is rendered when the latest launch contain a wikipedia url',
+        (tester) async {
+          when(() => launchesCubit.state).thenReturn(
+            LaunchesState(
+              status: LaunchesStatus.success,
+              latestLaunch: latestLaunch,
+            ),
+          );
+          await mockNetworkImages(() async {
+            await tester.pumpApp(
+              BlocProvider.value(
+                value: launchesCubit,
+                child: const LaunchesView(),
+              ),
+            );
+          });
 
-    //       expect(find.byKey(key), findsOneWidget);
-    //     },
-    //   );
+          expect(find.byKey(key), findsOneWidget);
+        },
+      );
 
-    //   testWidgets(
-    //     'attempts to open webcast url when pressed',
-    //     (tester) async {
-    //       await mockNetworkImages(() async {
-    //         await tester.pumpApp(
-    //           BlocProvider.value(
-    //             value: launchesCubit,
-    //             child: const LaunchesView(),
-    //           ),
-    //         );
-    //       });
+      testWidgets('attemps to open wikipedia url when pressed', (tester) async {
+        await mockNetworkImages(() async {
+          when(() => launchesCubit.state).thenReturn(
+            LaunchesState(
+              status: LaunchesStatus.success,
+              latestLaunch: latestLaunch,
+            ),
+          );
+          await tester.pumpApp(
+            BlocProvider.value(
+              value: launchesCubit,
+              child: const LaunchesView(),
+            ),
+          );
+        });
+        await tester.tap(find.byKey(wikipediaKey));
 
-    //       await tester.tap(find.byKey(webcastKey));
+        verify(
+          () => urlLauncherPlatform.canLaunch(latestLaunch.links.wikipedia!),
+        ).called(1);
+        verify(
+          () => urlLauncherPlatform.launch(
+            latestLaunch.links.wikipedia!,
+            useSafariVC: true,
+            useWebView: false,
+            enableJavaScript: false,
+            enableDomStorage: false,
+            universalLinksOnly: false,
+            headers: const <String, String>{},
+          ),
+        ).called(1);
+      });
 
-    //       verify(
-    //         () => urlLauncherPlatform.canLaunch(latestLaunch.links.webcast),
-    //       ).called(1);
-    //       verify(
-    //         () => urlLauncherPlatform.launch(
-    //           latestLaunch.links.webcast,
-    //           useSafariVC: true,
-    //           useWebView: false,
-    //           enableJavaScript: false,
-    //           enableDomStorage: false,
-    //           universalLinksOnly: false,
-    //           headers: const <String, String>{},
-    //         ),
-    //       ).called(1);
-    //     },
-    //   );
+      testWidgets(
+        'attempts to open webcast url when pressed',
+        (tester) async {
+          when(() => launchesCubit.state).thenReturn(
+            LaunchesState(
+              status: LaunchesStatus.success,
+              latestLaunch: latestLaunch,
+            ),
+          );
+          await mockNetworkImages(() async {
+            await tester.pumpApp(
+              BlocProvider.value(
+                value: launchesCubit,
+                child: const LaunchesView(),
+              ),
+            );
+          });
 
-    //   testWidgets(
-    //     'attempts to open wikipedia url when pressed',
-    //     (tester) async {
-    //       await mockNetworkImages(() async {
-    //         await tester.pumpApp(
-    //           BlocProvider.value(
-    //             value: launchesCubit,
-    //             child: const LaunchesView(),
-    //           ),
-    //         );
-    //       });
+          await tester.tap(find.byKey(webcastKey));
 
-    //       await tester.tap(find.byKey(wikipediaKey));
-
-    //       verify(
-    //         () => urlLauncherPlatform.canLaunch(latestLaunch.links.wikipedia),
-    //       ).called(1);
-    //       verify(
-    //         () => urlLauncherPlatform.launch(
-    //           latestLaunch.links.wikipedia,
-    //           useSafariVC: true,
-    //           useWebView: false,
-    //           enableJavaScript: false,
-    //           enableDomStorage: false,
-    //           universalLinksOnly: false,
-    //           headers: const <String, String>{},
-    //         ),
-    //       ).called(1);
-    //     },
-    //   );
-    // });
+          verify(
+            () => urlLauncherPlatform.canLaunch(latestLaunch.links.webcast!),
+          ).called(1);
+          verify(
+            () => urlLauncherPlatform.launch(
+              latestLaunch.links.webcast!,
+              useSafariVC: true,
+              useWebView: false,
+              enableJavaScript: false,
+              enableDomStorage: false,
+              universalLinksOnly: false,
+              headers: const <String, String>{},
+            ),
+          ).called(1);
+        },
+      );
+    });
   });
 }

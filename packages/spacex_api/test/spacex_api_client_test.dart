@@ -16,16 +16,18 @@ void main() {
     late http.Client httpClient;
     late SpaceXApiClient subject;
 
+    final date = DateTime.now();
+
     final rockets = List.generate(
       3,
       (i) => Rocket(
-        id: '$i',
-        name: 'mock-rocket-name-$i',
-        description: 'mock-rocket-description-$i',
-        height: const Length(meters: 1, feet: 1),
-        diameter: const Length(meters: 1, feet: 1),
-        mass: const Mass(kg: 1, lb: 1),
-      ),
+          id: '$i',
+          name: 'mock-rocket-name-$i',
+          description: 'mock-rocket-description-$i',
+          height: const Length(meters: 1, feet: 1),
+          diameter: const Length(meters: 1, feet: 1),
+          mass: const Mass(kg: 1, lb: 1),
+          firstFlight: DateTime.now()),
     );
 
     final crewMembers = List.generate(
@@ -42,17 +44,16 @@ void main() {
       ),
     );
 
-    final latestLaunch = List.generate(
-      3,
-      (i) => Launch(
-        id: '$i',
-        name: 'mock-launch-name-$i',
-        links: const Links(
-            patch: Patch(
-                small: 'https://avatars.githubusercontent.com/u/2918581?v=4'),
-            webcast: 'https://www.youtube.com',
-            wikipedia: 'https://www.wikipedia.org/'),
-      ),
+    final latestLaunch = Launch(
+      id: '1337',
+      name: 'mock-launch-name-1337',
+      dateLocal: date,
+      dateUtc: date,
+      links: const Links(
+          patch: Patch(
+              small: 'https://avatars.githubusercontent.com/u/2918581?v=4'),
+          webcast: 'https://www.youtube.com',
+          wikipedia: 'https://www.wikipedia.org/'),
     );
 
     setUp(() {
@@ -121,7 +122,7 @@ void main() {
       test(
         'throws JsonDeserializationException '
         'when deserializing json body fails',
-        () {
+        () async {
           when(() => httpClient.get(rocketUri)).thenAnswer(
             (_) async => http.Response(
               '[{"this_is_not_a_rocket_doc": true}]',
@@ -233,7 +234,6 @@ void main() {
       });
     });
 
-//////////////////////////////////////
     group('.fetchLatestLaunch', () {
       setUp(() {
         when(() => httpClient.get(latestLaunchUri)).thenAnswer(
@@ -287,7 +287,7 @@ void main() {
         () {
           when(() => httpClient.get(latestLaunchUri)).thenAnswer(
             (_) async => http.Response(
-              '[{"this_is_not_a_latest_launch_doc": true}]',
+              '{"this_is_not_the_latest_launch": true}',
               200,
             ),
           );
@@ -301,12 +301,13 @@ void main() {
 
       test('makes correct request', () async {
         await subject.fetchLatestLaunch();
+
         verify(
           () => httpClient.get(latestLaunchUri),
         ).called(1);
       });
 
-      test('returns correct list of the latest launch', () {
+      test('returns correct element of the latest launch', () {
         expect(
           subject.fetchLatestLaunch(),
           completion(equals(latestLaunch)),

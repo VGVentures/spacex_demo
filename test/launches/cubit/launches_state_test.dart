@@ -5,10 +5,13 @@ import 'package:spacex_demo/launches/launches.dart';
 
 void main() {
   group('LaunchesState', () {
-    const launch = Launch(
+    final date = DateTime.now();
+    final launch = Launch(
       id: '0',
       name: 'mock-launch-name',
-      links: Links(
+      dateLocal: date,
+      dateUtc: date,
+      links: const Links(
         patch: Patch(
           small: 'https://avatars.githubusercontent.com/u/2918581?v=4',
           large: 'https://avatars.githubusercontent.com/u/2918581?v=4',
@@ -19,21 +22,15 @@ void main() {
     );
     test('supports value comparison', () {
       expect(
-        const LaunchesState(
+        LaunchesState(
           status: LaunchesStatus.success,
           latestLaunch: launch,
         ),
-        const LaunchesState(
+        LaunchesState(
           status: LaunchesStatus.success,
           latestLaunch: launch,
         ),
       );
-    });
-    test('copyWith', () {
-      const state = LaunchesState(status: LaunchesStatus.loading);
-      state.copyWith(status: LaunchesStatus.success);
-
-      expect(state.status, state.status);
     });
   });
 }

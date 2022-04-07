@@ -12,9 +12,13 @@ void main() {
   group('CrewCubit', () {
     late LaunchRepository launchRepository;
 
+    final date = DateTime.now();
+
     final latestLaunch = Launch(
       id: '0',
       name: 'mock-launch-name',
+      dateLocal: date,
+      dateUtc: date,
       links: const Links(
         patch: Patch(
           small: 'https://avatars.githubusercontent.com/u/2918581?v=4',

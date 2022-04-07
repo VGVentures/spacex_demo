@@ -9,13 +9,14 @@ class MockRocketRepository extends Mock implements RocketRepository {}
 
 void main() {
   group('RocketDetailsCubit', () {
-    const rocket = Rocket(
+    final rocket = Rocket(
       id: '0',
       name: 'mock-rocket-name',
       description: 'mock-rocket-description',
       height: Length(meters: 1, feet: 1),
       diameter: Length(meters: 1, feet: 1),
       mass: Mass(kg: 1, lb: 1),
+      firstFlight: DateTime.now(),
     );
 
     test('initial state is correct', () {
