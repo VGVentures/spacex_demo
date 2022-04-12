@@ -1,0 +1,14 @@
+name: launch_repository_example
+description: A small example package showcasing the launch_repository.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+
+dependencies:
+  launch_repository:
+    path: ../
+
+dev_dependencies:
+  very_good_analysis: ^2.4.0

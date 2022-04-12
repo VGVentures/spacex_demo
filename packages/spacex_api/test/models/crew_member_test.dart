@@ -57,7 +57,7 @@ void main() {
           wikipedia: 'https://www.wikipedia.org/',
           launches: const ['Launch 1', 'Launch 2'],
         ).stringify,
-        isTrue,
+        isNull,
       );
     });
   });

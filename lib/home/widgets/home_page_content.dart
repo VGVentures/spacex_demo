@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex_demo/crew/crew.dart';
 import 'package:spacex_demo/home/home.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
+import 'package:spacex_demo/launches/launches.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 class HomePageContent extends StatelessWidget {
@@ -15,6 +16,22 @@ class HomePageContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 16,
+              ),
+              child: SpaceXCategoryCard(
+                key: const Key(
+                  'homePageContent_latestLaunch_spaceXCategoryCard',
+                ),
+                onTap: () => Navigator.of(context).push(LaunchesPage.route()),
+                title: Text(l10n.latestLaunchSpaceXTileTitle),
+                imageUrl: 'assets/images/img_spacex_launch.jpeg',
+              ),
+            ),
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(

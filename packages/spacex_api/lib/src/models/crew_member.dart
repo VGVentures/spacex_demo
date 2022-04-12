@@ -6,7 +6,7 @@ part 'crew_member.g.dart';
 /// {@template crew_member}
 /// A model containing data about a SpaceX crew member
 /// {@endtemplate}
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class CrewMember extends Equatable {
   /// {@macro crew_member}
   const CrewMember({
@@ -59,9 +59,6 @@ class CrewMember extends Equatable {
 
   /// Converts this [CrewMember] instance into a JSON [Map]
   Map<String, dynamic> toJson() => _$CrewMemberToJson(this);
-
-  @override
-  bool get stringify => true;
 
   @override
   String toString() => 'Crew Member($id, $name)';

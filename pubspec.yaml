@@ -6,7 +6,7 @@ homepage: https://github.com/VGVentures/spacex_demo
 publish_to: none
 
 environment:
-  sdk: ">=2.14.0-0 <3.0.0"
+  sdk: '>=2.14.0-0 <3.0.0'
 
 dependencies:
   bloc: ^7.2.1
@@ -18,6 +18,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
+  launch_repository:
+    path: packages/launch_repository
   rocket_repository:
     path: packages/rocket_repository
   spacex_api:

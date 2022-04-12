@@ -1,5 +1,6 @@
 import 'package:crew_member_repository/crew_member_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:launch_repository/launch_repository.dart';
 import 'package:mockingjay/mockingjay.dart';
 import 'package:rocket_repository/rocket_repository.dart';
 import 'package:spacex_demo/app/app.dart';
@@ -14,10 +15,12 @@ class MockCrewMemberRepository extends Mock implements CrewMemberRepository {}
 void main() {
   late RocketRepository rocketRepository;
   late CrewMemberRepository crewMemberRepository;
+  late LaunchRepository launchRepository;
 
   setUp(() {
     rocketRepository = MockRocketRepository();
     crewMemberRepository = MockCrewMemberRepository();
+    launchRepository = LaunchRepository();
   });
 
   group('App', () {
@@ -26,6 +29,7 @@ void main() {
         App(
           rocketRepository: rocketRepository,
           crewMemberRepository: crewMemberRepository,
+          launchRepository: launchRepository,
         ),
       );
       expect(find.byType(AppView), findsOneWidget);

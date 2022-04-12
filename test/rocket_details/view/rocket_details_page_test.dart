@@ -139,15 +139,16 @@ void main() {
 
       testWidgets('renders cross icon when rocket is inactive', (tester) async {
         when(() => rocketDetailsCubit.state).thenReturn(
-          const RocketDetailsState(
+          RocketDetailsState(
             rocket: Rocket(
               id: '0',
               name: 'mock-rocket-name',
               description: 'mock-rocket-description',
-              height: Length(meters: 1, feet: 1),
-              diameter: Length(meters: 1, feet: 1),
-              mass: Mass(kg: 1, lb: 1),
+              height: const Length(meters: 1, feet: 1),
+              diameter: const Length(meters: 1, feet: 1),
+              mass: const Mass(kg: 1, lb: 1),
               active: false,
+              firstFlight: DateTime.now(),
             ),
           ),
         );
@@ -201,14 +202,15 @@ void main() {
         'is not rendered when the rocket does not contain a wikipedia url',
         (tester) async {
           when(() => rocketDetailsCubit.state).thenReturn(
-            const RocketDetailsState(
+            RocketDetailsState(
               rocket: Rocket(
                 id: '0',
                 name: 'mock-rocket-name',
                 description: 'mock-rocket-description',
-                height: Length(meters: 1, feet: 1),
-                diameter: Length(meters: 1, feet: 1),
-                mass: Mass(kg: 1, lb: 1),
+                height: const Length(meters: 1, feet: 1),
+                diameter: const Length(meters: 1, feet: 1),
+                mass: const Mass(kg: 1, lb: 1),
+                firstFlight: DateTime.now(),
               ),
             ),
           );
