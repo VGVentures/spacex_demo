@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:launch_repository/launch_repository.dart';
 import 'package:spacex_api/spacex_api.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
-import 'package:spacex_demo/launches/cubit/launches_cubit.dart';
+import 'package:spacex_demo/launches/launches.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LaunchesPage extends StatelessWidget {
@@ -51,7 +51,7 @@ class _LaunchesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final state = context.select((LaunchesCubit cubit) => cubit.state);
+    final state = context.watch<LaunchesCubit>().state;
 
     switch (state.status) {
       case LaunchesStatus.initial:
