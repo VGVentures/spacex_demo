@@ -60,7 +60,7 @@ void main() {
   });
 
   setUpAll(() {
-    registerFallbackValue<RocketDetailsState>(
+    registerFallbackValue(
       RocketDetailsState(rocket: rocket),
     );
   });

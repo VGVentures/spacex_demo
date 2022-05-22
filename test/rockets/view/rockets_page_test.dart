@@ -14,6 +14,8 @@ class MockRocketRepository extends Mock implements RocketRepository {}
 class MockRocketsCubit extends MockCubit<RocketsState> implements RocketsCubit {
 }
 
+class FakeRoute<T> extends Fake implements Route<T> {}
+
 void main() {
   final rockets = List.generate(
     3,
@@ -63,12 +65,13 @@ void main() {
       rocketsCubit = MockRocketsCubit();
 
       navigator = MockNavigator();
-      when(() => navigator.push(any(that: isRoute<void>())))
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
           .thenAnswer((_) async {});
     });
 
     setUpAll(() {
-      registerFallbackValue<RocketsState>(const RocketsState());
+      registerFallbackValue(const RocketsState());
+      registerFallbackValue(FakeRoute<void>());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
@@ -176,7 +179,8 @@ void main() {
 
         await tester.tap(find.text(rockets.first.name));
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
   });
