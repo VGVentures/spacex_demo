@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:spacex_demo/crew/crew.dart';
 import 'package:spacex_demo/home/widgets/home_page_content.dart';
 import 'package:spacex_demo/home/widgets/spacex_category_card.dart';
+import 'package:spacex_demo/rockets/rockets.dart';
 
 import '../../helpers/pump_app.dart';
+
+class FakeRoute<T> extends Fake implements Route<T> {}
 
 void main() {
   group('HomePageContent', () {
     late MockNavigator navigator;
 
+    setUpAll(() {
+      registerFallbackValue(FakeRoute<RocketsPage>());
+      registerFallbackValue(FakeRoute<CrewPage>());
+    });
+
     setUp(() {
       navigator = MockNavigator();
 
-      when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+      when(() => navigator.push<RocketsPage>(any(that: isRoute<RocketsPage>())))
+          .thenAnswer((_) async => null);
 
-      when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+      when(() => navigator.push<CrewPage>(any(that: isRoute<CrewPage>())))
+          .thenAnswer((_) async => null);
     });
 
     testWidgets(
@@ -63,7 +71,9 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() =>
+                navigator.push<RocketsPage>(any(that: isRoute<RocketsPage>())))
+            .called(1);
       },
     );
 
@@ -82,7 +92,8 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<CrewPage>(any(that: isRoute<CrewPage>())))
+            .called(1);
       },
     );
   });
