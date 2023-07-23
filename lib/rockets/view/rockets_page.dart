@@ -51,26 +51,22 @@ class _Content extends StatelessWidget {
     final l10n = context.l10n;
     final status = context.select((RocketsCubit cubit) => cubit.state.status);
 
-    switch (status) {
-      case RocketsStatus.initial:
-        return const SizedBox(
+    return switch (status) {
+      RocketsStatus.initial => const SizedBox(
           key: Key('rocketsView_initial_sizedBox'),
-        );
-      case RocketsStatus.loading:
-        return const Center(
+        ),
+      RocketsStatus.loading => const Center(
           key: Key('rocketsView_loading_indicator'),
           child: CircularProgressIndicator.adaptive(),
-        );
-      case RocketsStatus.failure:
-        return Center(
+        ),
+      RocketsStatus.failure => Center(
           key: const Key('rocketsView_failure_text'),
           child: Text(l10n.rocketsFetchErrorMessage),
-        );
-      case RocketsStatus.success:
-        return const _RocketList(
+        ),
+      RocketsStatus.success => const _RocketList(
           key: Key('rocketsView_success_rocketList'),
-        );
-    }
+        )
+    };
   }
 }
 
