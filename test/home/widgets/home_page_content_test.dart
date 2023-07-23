@@ -18,10 +18,8 @@ void main() {
         return null;
       });
 
-      when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {
-        return null;
-      });
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
+          .thenAnswer((_) async {});
     });
 
     testWidgets(
@@ -66,7 +64,8 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
 
@@ -85,7 +84,8 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
   });

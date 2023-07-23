@@ -66,10 +66,8 @@ void main() {
       crewCubit = MockCrewCubit();
       navigator = MockNavigator();
 
-      when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {
-        return null;
-      });
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
+          .thenAnswer((_) async {});
     });
 
     setUpAll(() {
@@ -186,7 +184,7 @@ void main() {
         await tester.tap(find.text(crewMembers.first.name));
 
         verify(
-          () => navigator.push(any(that: isRoute<void>())),
+          () => navigator.push<void>(any(that: isRoute<void>())),
         ).called(1);
       },
     );

@@ -63,10 +63,8 @@ void main() {
       rocketsCubit = MockRocketsCubit();
 
       navigator = MockNavigator();
-      when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {
-        return null;
-      });
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
+          .thenAnswer((_) async {});
     });
 
     setUpAll(() {
@@ -178,7 +176,8 @@ void main() {
 
         await tester.tap(find.text(rockets.first.name));
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
   });

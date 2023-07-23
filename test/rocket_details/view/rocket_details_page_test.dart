@@ -14,7 +14,7 @@ import '../../helpers/helpers.dart';
 class MockRocketDetailsCubit extends MockCubit<RocketDetailsState>
     implements RocketDetailsCubit {}
 
-class MockUrlLauncherPlatorm extends Mock
+class MockUrlLauncherPlatform extends Mock
     with MockPlatformInterfaceMixin
     implements UrlLauncherPlatform {}
 
@@ -41,26 +41,18 @@ void main() {
       RocketDetailsState(rocket: rocket),
     );
 
-    urlLauncherPlatform = MockUrlLauncherPlatorm();
+    urlLauncherPlatform = MockUrlLauncherPlatform();
     UrlLauncherPlatform.instance = urlLauncherPlatform;
     when(() => urlLauncherPlatform.canLaunch(any()))
         .thenAnswer((_) async => true);
     when(
-      () => urlLauncherPlatform.launch(
-        any(),
-        useSafariVC: any(named: 'useSafariVC'),
-        useWebView: any(named: 'useWebView'),
-        enableJavaScript: any(named: 'enableJavaScript'),
-        enableDomStorage: any(named: 'enableDomStorage'),
-        universalLinksOnly: any(named: 'universalLinksOnly'),
-        headers: any(named: 'headers'),
-        webOnlyWindowName: any(named: 'webOnlyWindowName'),
-      ),
+      () => urlLauncherPlatform.launchUrl(any(), any()),
     ).thenAnswer((_) async => true);
   });
 
   setUpAll(() {
     registerFallbackValue(RocketDetailsState(rocket: rocket));
+    registerFallbackValue(const LaunchOptions());
   });
 
   group('RocketDetailsPage', () {
@@ -257,15 +249,7 @@ void main() {
           verify(() => urlLauncherPlatform.canLaunch(rocket.wikipedia!))
               .called(1);
           verify(
-            () => urlLauncherPlatform.launch(
-              rocket.wikipedia!,
-              useSafariVC: true,
-              useWebView: false,
-              enableJavaScript: false,
-              enableDomStorage: false,
-              universalLinksOnly: false,
-              headers: const <String, String>{},
-            ),
+            () => urlLauncherPlatform.launchUrl(rocket.wikipedia!, any()),
           ).called(1);
         },
       );
