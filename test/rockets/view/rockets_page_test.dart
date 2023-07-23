@@ -11,8 +11,8 @@ import '../../helpers/helpers.dart';
 
 class MockRocketRepository extends Mock implements RocketRepository {}
 
-class MockRocketsCubit extends MockCubit<RocketsState> implements RocketsCubit {
-}
+class MockRocketsCubit extends MockCubit<RocketsState>
+    implements RocketsCubit {}
 
 void main() {
   final rockets = List.generate(
@@ -68,7 +68,7 @@ void main() {
     });
 
     setUpAll(() {
-      registerFallbackValue<RocketsState>(const RocketsState());
+      registerFallbackValue(const RocketsState());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {

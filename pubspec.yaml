@@ -6,18 +6,18 @@ homepage: https://github.com/VGVentures/spacex_demo
 publish_to: none
 
 environment:
-  sdk: ">=2.14.0-0 <3.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  bloc: ^7.2.1
+  bloc: ^8.1.2
   crew_member_repository:
     path: packages/crew_member_repository
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.0
+  flutter_bloc: ^8.1.3
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  intl: ^0.18.0
   rocket_repository:
     path: packages/rocket_repository
   spacex_api:
@@ -25,12 +25,12 @@ dependencies:
   url_launcher: ^6.0.12
 
 dev_dependencies:
-  bloc_test: ^8.2.0
+  bloc_test: ^9.1.3
   flutter_test:
     sdk: flutter
-  mockingjay: ^0.1.1
-  mocktail: ^0.1.4
-  mocktail_image_network: ^0.1.0
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
+  mocktail_image_network: ^0.3.1
   plugin_platform_interface: ^2.0.2
   url_launcher_platform_interface: ^2.0.4
   very_good_analysis: ^2.4.0

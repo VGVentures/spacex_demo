@@ -60,9 +60,7 @@ void main() {
   });
 
   setUpAll(() {
-    registerFallbackValue<RocketDetailsState>(
-      RocketDetailsState(rocket: rocket),
-    );
+    registerFallbackValue(RocketDetailsState(rocket: rocket));
   });
 
   group('RocketDetailsPage', () {

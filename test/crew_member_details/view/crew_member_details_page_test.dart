@@ -58,9 +58,7 @@ void main() {
   });
 
   setUpAll(() {
-    registerFallbackValue<CrewMemberDetailsState>(
-      const CrewMemberDetailsState(crewMember: crewMember),
-    );
+    registerFallbackValue(const CrewMemberDetailsState(crewMember: crewMember));
   });
 
   group('CrewMemberDetailsPage', () {

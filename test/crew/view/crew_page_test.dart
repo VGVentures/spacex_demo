@@ -71,8 +71,8 @@ void main() {
     });
 
     setUpAll(() {
-      registerFallbackValue<CrewState>(const CrewState());
-      registerFallbackValue<Uri>(Uri());
+      registerFallbackValue(const CrewState());
+      registerFallbackValue(Uri());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
