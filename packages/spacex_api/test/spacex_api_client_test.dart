@@ -50,7 +50,7 @@ void main() {
 
     test('constructor returns normally', () {
       expect(
-        () => SpaceXApiClient(),
+        SpaceXApiClient.new,
         returnsNormally,
       );
     });

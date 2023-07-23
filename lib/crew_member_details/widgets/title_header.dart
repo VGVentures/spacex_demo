@@ -4,7 +4,7 @@ import 'package:spacex_demo/crew_member_details/cubit/crew_member_details_cubit.
 import 'package:spacex_demo/l10n/l10n.dart';
 
 class TitleHeader extends StatelessWidget {
-  const TitleHeader({Key? key}) : super(key: key);
+  const TitleHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TitleHeader extends StatelessWidget {
         children: [
           Text(
             crewMember.name,
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(width: 4),
           if (crewMember.status == 'active')

@@ -66,13 +66,13 @@ void main() {
       crewCubit = MockCrewCubit();
       navigator = MockNavigator();
 
-      when(() => navigator.push(any(that: isRoute<void>())))
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
           .thenAnswer((_) async {});
     });
 
     setUpAll(() {
-      registerFallbackValue<CrewState>(const CrewState());
-      registerFallbackValue<Uri>(Uri());
+      registerFallbackValue(const CrewState());
+      registerFallbackValue(Uri());
     });
 
     testWidgets('renders empty page when status is initial', (tester) async {
@@ -184,7 +184,7 @@ void main() {
         await tester.tap(find.text(crewMembers.first.name));
 
         verify(
-          () => navigator.push(any(that: isRoute<void>())),
+          () => navigator.push<void>(any(that: isRoute<void>())),
         ).called(1);
       },
     );

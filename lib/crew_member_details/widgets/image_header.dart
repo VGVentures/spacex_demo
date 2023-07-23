@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_demo/crew_member_details/cubit/crew_member_details_cubit.dart';
 
 class ImageHeader extends StatelessWidget {
-  const ImageHeader({Key? key}) : super(key: key);
+  const ImageHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

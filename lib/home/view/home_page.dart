@@ -3,7 +3,7 @@ import 'package:spacex_demo/home/widgets/home_page_content.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

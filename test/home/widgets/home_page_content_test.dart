@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:spacex_demo/home/widgets/home_page_content.dart';
 import 'package:spacex_demo/home/widgets/spacex_category_card.dart';
 
@@ -15,9 +14,11 @@ void main() {
       navigator = MockNavigator();
 
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
 
-      when(() => navigator.push(any(that: isRoute<void>())))
+      when(() => navigator.push<void>(any(that: isRoute<void>())))
           .thenAnswer((_) async {});
     });
 
@@ -63,7 +64,8 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
 
@@ -82,7 +84,8 @@ void main() {
           ),
         );
 
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(() => navigator.push<void>(any(that: isRoute<void>())))
+            .called(1);
       },
     );
   });

@@ -32,7 +32,7 @@ void main() {
 
     test('constructor returns normally', () {
       expect(
-        () => RocketRepository(),
+        RocketRepository.new,
         returnsNormally,
       );
     });

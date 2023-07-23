@@ -15,7 +15,7 @@ import '../../helpers/helpers.dart';
 class MockCrewMemberDetailsCubit extends MockCubit<CrewMemberDetailsState>
     implements CrewMemberDetailsCubit {}
 
-class MockUrlLauncherPlatorm extends Mock
+class MockUrlLauncherPlatform extends Mock
     with MockPlatformInterfaceMixin
     implements UrlLauncherPlatform {}
 
@@ -39,28 +39,18 @@ void main() {
     when(() => crewMemberDetailsCubit.state)
         .thenReturn(const CrewMemberDetailsState(crewMember: crewMember));
 
-    urlLauncherPlatform = MockUrlLauncherPlatorm();
+    urlLauncherPlatform = MockUrlLauncherPlatform();
     UrlLauncherPlatform.instance = urlLauncherPlatform;
     when(() => urlLauncherPlatform.canLaunch(any()))
         .thenAnswer((_) async => true);
     when(
-      () => urlLauncherPlatform.launch(
-        any(),
-        useSafariVC: any(named: 'useSafariVC'),
-        useWebView: any(named: 'useWebView'),
-        enableJavaScript: any(named: 'enableJavaScript'),
-        enableDomStorage: any(named: 'enableDomStorage'),
-        universalLinksOnly: any(named: 'universalLinksOnly'),
-        headers: any(named: 'headers'),
-        webOnlyWindowName: any(named: 'webOnlyWindowName'),
-      ),
+      () => urlLauncherPlatform.launchUrl(any(), any()),
     ).thenAnswer((_) async => true);
   });
 
   setUpAll(() {
-    registerFallbackValue<CrewMemberDetailsState>(
-      const CrewMemberDetailsState(crewMember: crewMember),
-    );
+    registerFallbackValue(const CrewMemberDetailsState(crewMember: crewMember));
+    registerFallbackValue(const LaunchOptions());
   });
 
   group('CrewMemberDetailsPage', () {
@@ -236,14 +226,9 @@ void main() {
           verify(() => urlLauncherPlatform.canLaunch(crewMember.wikipedia))
               .called(1);
           verify(
-            () => urlLauncherPlatform.launch(
+            () => urlLauncherPlatform.launchUrl(
               crewMember.wikipedia,
-              useSafariVC: true,
-              useWebView: false,
-              enableJavaScript: false,
-              enableDomStorage: false,
-              universalLinksOnly: false,
-              headers: const <String, String>{},
+              any(),
             ),
           ).called(1);
         },

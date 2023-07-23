@@ -66,8 +66,9 @@ class SpaceXApiClient {
 
     try {
       return responseBody
-          .map((dynamic item) =>
-              CrewMember.fromJson(item as Map<String, dynamic>))
+          .map(
+            (dynamic item) => CrewMember.fromJson(item as Map<String, dynamic>),
+          )
           .toList();
     } catch (_) {
       throw JsonDeserializationException();

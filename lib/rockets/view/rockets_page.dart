@@ -6,11 +6,11 @@ import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 class RocketsPage extends StatelessWidget {
-  const RocketsPage({Key? key}) : super(key: key);
+  const RocketsPage({super.key});
 
-  static Route<RocketsPage> route() {
+  static Route<void> route() {
     return MaterialPageRoute(
-      builder: (context) => const RocketsPage(),
+      builder: (_) => const RocketsPage(),
     );
   }
 
@@ -26,7 +26,7 @@ class RocketsPage extends StatelessWidget {
 }
 
 class RocketsView extends StatelessWidget {
-  const RocketsView({Key? key}) : super(key: key);
+  const RocketsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,38 +44,34 @@ class RocketsView extends StatelessWidget {
 }
 
 class _Content extends StatelessWidget {
-  const _Content({Key? key}) : super(key: key);
+  const _Content();
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final status = context.select((RocketsCubit cubit) => cubit.state.status);
 
-    switch (status) {
-      case RocketsStatus.initial:
-        return const SizedBox(
+    return switch (status) {
+      RocketsStatus.initial => const SizedBox(
           key: Key('rocketsView_initial_sizedBox'),
-        );
-      case RocketsStatus.loading:
-        return const Center(
+        ),
+      RocketsStatus.loading => const Center(
           key: Key('rocketsView_loading_indicator'),
           child: CircularProgressIndicator.adaptive(),
-        );
-      case RocketsStatus.failure:
-        return Center(
+        ),
+      RocketsStatus.failure => Center(
           key: const Key('rocketsView_failure_text'),
           child: Text(l10n.rocketsFetchErrorMessage),
-        );
-      case RocketsStatus.success:
-        return const _RocketList(
+        ),
+      RocketsStatus.success => const _RocketList(
           key: Key('rocketsView_success_rocketList'),
-        );
-    }
+        )
+    };
   }
 }
 
 class _RocketList extends StatelessWidget {
-  const _RocketList({Key? key}) : super(key: key);
+  const _RocketList({super.key});
 
   @override
   Widget build(BuildContext context) {

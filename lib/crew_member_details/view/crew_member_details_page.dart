@@ -7,7 +7,7 @@ import 'package:spacex_demo/l10n/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CrewMemberDetailsPage extends StatelessWidget {
-  const CrewMemberDetailsPage({Key? key}) : super(key: key);
+  const CrewMemberDetailsPage({super.key});
 
   static Route<void> route({required CrewMember crewMember}) {
     return MaterialPageRoute(
@@ -25,7 +25,7 @@ class CrewMemberDetailsPage extends StatelessWidget {
 }
 
 class CrewMemberDetailsView extends StatelessWidget {
-  const CrewMemberDetailsView({Key? key}) : super(key: key);
+  const CrewMemberDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +61,10 @@ class CrewMemberDetailsView extends StatelessWidget {
                   'crewMemberDetailsPage_openWikipedia_elevatedButton',
                 ),
                 onPressed: () async {
-                  final url = crewMember.wikipedia;
+                  final uri = Uri.parse(crewMember.wikipedia);
 
-                  if (await canLaunch(url)) {
-                    await launch(url);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
                   }
                 },
                 child: Text(l10n.openWikipediaButtonText),
