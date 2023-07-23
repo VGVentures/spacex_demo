@@ -5,7 +5,7 @@ import 'package:spacex_demo/l10n/l10n.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 class HomePageContent extends StatelessWidget {
-  const HomePageContent({Key? key}) : super(key: key);
+  const HomePageContent({super.key});
 
   @override
   Widget build(BuildContext context) {

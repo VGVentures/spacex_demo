@@ -6,7 +6,7 @@ import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:spacex_demo/rockets/rockets.dart';
 
 class RocketsPage extends StatelessWidget {
-  const RocketsPage({Key? key}) : super(key: key);
+  const RocketsPage({super.key});
 
   static Route<RocketsPage> route() {
     return MaterialPageRoute(
@@ -26,7 +26,7 @@ class RocketsPage extends StatelessWidget {
 }
 
 class RocketsView extends StatelessWidget {
-  const RocketsView({Key? key}) : super(key: key);
+  const RocketsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class RocketsView extends StatelessWidget {
 }
 
 class _Content extends StatelessWidget {
-  const _Content({Key? key}) : super(key: key);
+  const _Content();
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _Content extends StatelessWidget {
 }
 
 class _RocketList extends StatelessWidget {
-  const _RocketList({Key? key}) : super(key: key);
+  const _RocketList({super.key});
 
   @override
   Widget build(BuildContext context) {

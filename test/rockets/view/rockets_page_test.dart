@@ -64,7 +64,9 @@ void main() {
 
       navigator = MockNavigator();
       when(() => navigator.push(any(that: isRoute<void>())))
-          .thenAnswer((_) async {});
+          .thenAnswer((_) async {
+        return null;
+      });
     });
 
     setUpAll(() {

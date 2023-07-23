@@ -8,12 +8,11 @@ import 'package:spacex_demo/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({
-    Key? key,
     required RocketRepository rocketRepository,
     required CrewMemberRepository crewMemberRepository,
+    super.key,
   })  : _rocketRepository = rocketRepository,
-        _crewMemberRepository = crewMemberRepository,
-        super(key: key);
+        _crewMemberRepository = crewMemberRepository;
 
   final RocketRepository _rocketRepository;
   final CrewMemberRepository _crewMemberRepository;
@@ -31,7 +30,7 @@ class App extends StatelessWidget {
 }
 
 class AppView extends StatelessWidget {
-  const AppView({Key? key}) : super(key: key);
+  const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +48,8 @@ class AppView extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Colors.white,
-            onPrimary: Colors.black,
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
           ),
         ),
       ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class SpaceXCategoryCard extends StatelessWidget {
   const SpaceXCategoryCard({
-    Key? key,
     required this.onTap,
     required this.title,
     required this.imageUrl,
-  }) : super(key: key);
+    super.key,
+  });
 
   final VoidCallback onTap;
   final Widget title;
@@ -40,7 +40,7 @@ class SpaceXCategoryCard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: DefaultTextStyle.merge(
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                       child: title,
                     ),
                   ),

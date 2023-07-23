@@ -6,7 +6,7 @@ import 'package:spacex_demo/crew_member_details/crew_member_details.dart';
 import 'package:spacex_demo/l10n/l10n.dart';
 
 class CrewPage extends StatelessWidget {
-  const CrewPage({Key? key}) : super(key: key);
+  const CrewPage({super.key});
 
   static Route<CrewPage> route() {
     return MaterialPageRoute(
@@ -26,7 +26,7 @@ class CrewPage extends StatelessWidget {
 }
 
 class CrewView extends StatelessWidget {
-  const CrewView({Key? key}) : super(key: key);
+  const CrewView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class CrewView extends StatelessWidget {
 }
 
 class _Content extends StatelessWidget {
-  const _Content({Key? key}) : super(key: key);
+  const _Content();
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _Content extends StatelessWidget {
 }
 
 class _CrewMembersList extends StatelessWidget {
-  const _CrewMembersList({Key? key}) : super(key: key);
+  const _CrewMembersList({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:spacex_demo/rocket_details/rocket_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RocketDetailsPage extends StatelessWidget {
-  const RocketDetailsPage({Key? key}) : super(key: key);
+  const RocketDetailsPage({super.key});
 
   static Route<void> route({required Rocket rocket}) {
     return MaterialPageRoute(
@@ -25,7 +25,7 @@ class RocketDetailsPage extends StatelessWidget {
 }
 
 class RocketDetailsView extends StatelessWidget {
-  const RocketDetailsView({Key? key}) : super(key: key);
+  const RocketDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +75,10 @@ class RocketDetailsView extends StatelessWidget {
                     'rocketDetailsPage_openWikipedia_elevatedButton',
                   ),
                   onPressed: () async {
-                    final url = rocket.wikipedia!;
+                    final uri = Uri.parse(rocket.wikipedia!);
 
-                    if (await canLaunch(url)) {
-                      await launch(url);
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(uri);
                     }
                   },
                   child: Text(l10n.openWikipediaButtonText),
@@ -92,7 +92,7 @@ class RocketDetailsView extends StatelessWidget {
 }
 
 class _ImageHeader extends StatelessWidget {
-  const _ImageHeader({Key? key}) : super(key: key);
+  const _ImageHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +118,7 @@ class _ImageHeader extends StatelessWidget {
 }
 
 class _TitleHeader extends StatelessWidget {
-  const _TitleHeader({Key? key}) : super(key: key);
+  const _TitleHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +132,7 @@ class _TitleHeader extends StatelessWidget {
         children: [
           Text(
             rocket.name,
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           if (rocket.active != null) ...[
             const SizedBox(width: 4),
